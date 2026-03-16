@@ -196,23 +196,26 @@
 .hero-image-bg {
   position: absolute;
   inset: 0;
+  /* Zoom in so the branded text in the centre of the image is cropped out;
+     only the dark atmospheric edges and texture remain visible */
   background-image: url('./hero-bg.jpg');
-  background-size: cover;
-  background-position: center center;
+  background-size: 320%;
+  background-position: center 95%;
   background-repeat: no-repeat;
   z-index: 0;
+  opacity: 0.35;
+  filter: brightness(0.6);
 }
 
-/* Overlay to ensure text readability — lighter to let the glow show through */
+/* Overlay — gradient to blend edges cleanly */
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    oklch(0.06 0.01 60 / 0.55) 0%,
-    oklch(0.06 0.01 60 / 0.35) 40%,
-    oklch(0.06 0.01 60 / 0.55) 80%,
-    oklch(0.06 0.01 60 / 0.85) 100%
+    rgba(13,12,10,0.7) 0%,
+    rgba(13,12,10,0.4) 50%,
+    rgba(13,12,10,0.85) 100%
   );
   z-index: 1;
 }
