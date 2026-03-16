@@ -178,7 +178,7 @@
 .theme-toggle:hover { color: var(--color-text); }
 
 /* ============================================
-   HERO — full viewport, wordmark centred
+   HERO — full viewport with brand image
    ============================================ */
 
 .hero {
@@ -193,46 +193,61 @@
   overflow: hidden;
 }
 
-.hero-bg-line {
+.hero-image-bg {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(600px, 90vw);
-  height: min(600px, 90vw);
-  border-radius: 50%;
-  border: 1px solid oklch(from var(--color-primary) l c h / 0.08);
-  pointer-events: none;
+  inset: 0;
+  background-image: url('./hero-bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 0;
 }
 
-.hero-bg-line--2 {
-  width: min(400px, 70vw);
-  height: min(400px, 70vw);
-  border-color: oklch(from var(--color-primary) l c h / 0.05);
+/* Overlay to ensure text readability — lighter to let the glow show through */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    oklch(0.06 0.01 60 / 0.55) 0%,
+    oklch(0.06 0.01 60 / 0.35) 40%,
+    oklch(0.06 0.01 60 / 0.55) 80%,
+    oklch(0.06 0.01 60 / 0.85) 100%
+  );
+  z-index: 1;
 }
 
-.hero-mark {
-  margin-bottom: var(--space-8);
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
 }
 
-.hero-wordmark {
-  font-family: var(--font-display);
-  font-size: clamp(3.5rem, 2rem + 6vw, 9rem);
-  font-weight: 300;
-  line-height: 1.0;
-  letter-spacing: 0.04em;
-  color: var(--color-text);
-  margin-bottom: var(--space-6);
-}
-
-.hero-wordmark span {
-  display: block;
-  font-size: clamp(1rem, 0.6rem + 1.5vw, 1.8rem);
-  font-weight: 400;
+.hero-eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--color-primary);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 2rem + 6vw, 8.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--color-primary);
 }
 
 .hero-tagline {
@@ -241,7 +256,7 @@
   font-weight: 300;
   line-height: 1.65;
   color: var(--color-text-muted);
-  max-width: 46ch;
+  max-width: 44ch;
   margin: 0 auto var(--space-10);
 }
 
@@ -250,6 +265,29 @@
   flex-wrap: wrap;
   gap: var(--space-4);
   justify-content: center;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-faint);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(5px); }
 }
 
 /* ============================================
@@ -289,35 +327,56 @@
 }
 
 /* ============================================
-   MANIFESTO / PILLARS
+   SECTION EYEBROW (shared)
    ============================================ */
 
-.manifesto-section {
+.section-eyebrow {
+  font-size: var(--text-xs); font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-8);
+  text-align: center;
+}
+
+.section-eyebrow--left {
+  text-align: left;
+  margin-bottom: var(--space-5);
+}
+
+/* ============================================
+   ABOUT SECTION
+   ============================================ */
+
+.about-section {
   padding-block: clamp(var(--space-20), 10vw, var(--space-32));
   border-top: 1px solid var(--color-divider);
 }
 
-/* Founder photo layout */
-.founder-inner {
+.about-inner {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 280px 1fr;
   gap: clamp(var(--space-12), 6vw, var(--space-20));
-  align-items: center;
-  margin-bottom: clamp(var(--space-12), 6vw, var(--space-20));
+  align-items: start;
 }
 
-.founder-photo-col {
-  flex-shrink: 0;
+@media (max-width: 768px) {
+  .about-inner {
+    grid-template-columns: 1fr;
+  }
+  .about-photo-wrap {
+    max-width: 200px;
+    aspect-ratio: 1/1 !important;
+  }
 }
 
-.founder-photo-wrap {
+.about-photo-wrap {
   border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 3/4;
   background: var(--color-surface);
 }
 
-.founder-photo {
+.about-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -327,44 +386,79 @@
   transition: filter 0.5s ease;
 }
 
-.founder-photo-wrap:hover .founder-photo {
+.about-photo-wrap:hover .about-photo {
   filter: grayscale(0%);
 }
 
-.founder-text-col {
+.about-text-col {
   display: flex;
   flex-direction: column;
+  padding-top: var(--space-4);
 }
 
-@media (max-width: 768px) {
-  .founder-inner {
-    grid-template-columns: 1fr;
-  }
-  .founder-photo-wrap {
-    max-width: 220px;
-    aspect-ratio: 1/1;
-  }
-}
-
-.manifesto-quote {
+.about-headline {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 1rem + 2vw, 2.8rem);
+  font-size: clamp(1.8rem, 1.2rem + 2vw, 3rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+  letter-spacing: 0.01em;
+}
+
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-bottom: var(--space-10);
+}
+
+.about-body p {
+  font-size: var(--text-base);
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+.about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* ============================================
+   MANIFESTO / PILLARS
+   ============================================ */
+
+.manifesto-section {
+  padding-block: clamp(var(--space-16), 8vw, var(--space-24));
+  border-top: 1px solid var(--color-divider);
+}
+
+.manifesto-pullquote {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 1rem + 2.5vw, 3.2rem);
   font-weight: 300;
   font-style: italic;
-  line-height: 1.4;
+  line-height: 1.35;
   color: var(--color-text);
-  text-align: left;
-  max-width: 36ch;
-  margin: 0 0 var(--space-8);
+  text-align: center;
+  max-width: 28ch;
+  margin: 0 auto clamp(var(--space-16), 8vw, var(--space-24));
+  padding-inline: var(--space-6);
+  position: relative;
 }
 
-.manifesto-attribution {
-  text-align: left;
+.manifesto-pullquote cite {
+  display: block;
+  margin-top: var(--space-6);
+  font-family: var(--font-body);
+  font-style: normal;
   font-size: var(--text-xs);
-  letter-spacing: 0.15em;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-primary);
-  margin-bottom: 0;
 }
 
 .pillars-grid {
@@ -399,85 +493,18 @@
   font-weight: 500;
   color: var(--color-text);
   margin-bottom: var(--space-4);
+  letter-spacing: 0.01em;
 }
 
 .pillar-body {
   font-size: var(--text-sm);
   font-weight: 300;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--color-text-muted);
 }
 
 /* ============================================
-   LINKS / CHANNELS SECTION
-   ============================================ */
-
-.channels-section {
-  padding-block: clamp(var(--space-16), 8vw, var(--space-24));
-  border-top: 1px solid var(--color-divider);
-}
-
-.section-eyebrow {
-  font-size: var(--text-xs); font-weight: 500;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-10);
-  text-align: center;
-}
-
-.channels-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  max-width: 600px;
-  margin-inline: auto;
-}
-
-.channel-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-5) var(--space-6);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
-  text-decoration: none;
-  color: var(--color-text);
-  transition: all var(--transition-interactive);
-  gap: var(--space-4);
-}
-
-.channel-link:hover {
-  border-color: oklch(from var(--color-primary) l c h / 0.4);
-  transform: translateX(4px);
-  background: var(--color-surface-2);
-}
-
-.channel-link-info { display: flex; flex-direction: column; gap: var(--space-1); }
-
-.channel-link-name {
-  font-size: var(--text-base); font-weight: 500;
-  color: var(--color-text);
-}
-
-.channel-link-desc {
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
-  font-weight: 300;
-}
-
-.channel-link-arrow {
-  color: var(--color-primary);
-  flex-shrink: 0;
-  transition: transform var(--transition-interactive);
-}
-
-.channel-link:hover .channel-link-arrow {
-  transform: translateX(4px);
-}
-
-/* ============================================
-   NOT / IS NOT SECTION
+   WHAT IT IS / ISN'T
    ============================================ */
 
 .contrast-section {
@@ -489,6 +516,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-6);
+  margin-top: var(--space-8);
 }
 
 @media (max-width: 600px) {
@@ -538,6 +566,178 @@
   content: '—';
   position: absolute; left: 0;
   color: var(--color-primary-dim);
+}
+
+/* ============================================
+   CHANNELS / FREE RESOURCES
+   ============================================ */
+
+.channels-section {
+  padding-block: clamp(var(--space-16), 8vw, var(--space-24));
+  border-top: 1px solid var(--color-divider);
+}
+
+.channels-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 1rem + 2.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: clamp(var(--space-10), 4vw, var(--space-16));
+}
+
+.channels-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.channel-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: all var(--transition-interactive);
+  gap: var(--space-4);
+}
+
+.channel-link:hover {
+  border-color: oklch(from var(--color-primary) l c h / 0.4);
+  transform: translateX(4px);
+  background: var(--color-surface-2);
+}
+
+.channel-link-info { display: flex; flex-direction: column; gap: var(--space-1); }
+
+.channel-link-name {
+  font-size: var(--text-base); font-weight: 500;
+  color: var(--color-text);
+}
+
+.channel-link-desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
+.channel-link-arrow {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  transition: transform var(--transition-interactive);
+}
+
+.channel-link:hover .channel-link-arrow {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   WORK WITH CLAUDIU — CTA SECTION
+   ============================================ */
+
+.work-section {
+  padding-block: clamp(var(--space-16), 8vw, var(--space-24));
+  border-top: 1px solid var(--color-divider);
+}
+
+.work-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 1rem + 2.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: clamp(var(--space-10), 4vw, var(--space-16));
+}
+
+.work-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+@media (max-width: 620px) {
+  .work-cards { grid-template-columns: 1fr; }
+}
+
+.work-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: clamp(var(--space-8), 4vw, var(--space-12));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: all var(--transition-interactive);
+}
+
+.work-card:hover {
+  border-color: oklch(from var(--color-primary) l c h / 0.4);
+  background: var(--color-surface-2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.work-card-top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.work-card-eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.work-card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.work-card-price {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+}
+
+.work-card-desc {
+  font-size: var(--text-sm);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  flex: 1;
+}
+
+.work-card-cta {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-top: auto;
+  transition: letter-spacing var(--transition-interactive);
+}
+
+.work-card:hover .work-card-cta {
+  letter-spacing: 0.15em;
 }
 
 /* ============================================
@@ -668,18 +868,18 @@
 .footer-links a {
   font-size: var(--text-xs); font-weight: 400;
   letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--color-text-faint); text-decoration: none;
+  color: var(--color-text-muted); text-decoration: none;
   transition: color var(--transition-interactive);
 }
 
 .footer-links a:hover { color: var(--color-primary); }
 
-.footer-credit {
-  font-size: var(--text-xs); color: var(--color-text-faint); text-decoration: none;
-  transition: color var(--transition-interactive);
+@media (max-width: 640px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
-
-.footer-credit:hover { color: var(--color-text-muted); }
 
 /* ============================================
    ANIMATIONS
