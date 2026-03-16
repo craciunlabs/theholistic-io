@@ -8,7 +8,7 @@ Brand home for **The Holistic** — business strategy and deep healing for intui
 
 The Holistic is not a course. Not a coaching programme. Not a spiritual brand.
 
-It's a free body of knowledge — built on 20 years in technology and business, 8 years of traditional Amazonian plant medicine work, and the conviction that declarative knowledge belongs to everyone.
+It's a free body of knowledge — built on over two decades in technology and business (started at 15), 8 years of traditional Amazonian plant medicine work, and the conviction that declarative knowledge belongs to everyone.
 
 **Founder:** Claudiu Craciun — [claudiucraciun.com](https://claudiucraciun.com)
 
