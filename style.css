@@ -1102,6 +1102,18 @@
   top: 100px;
 }
 
+/* In single-column flow the sidebar has nothing to stick beside.
+   Leaving it sticky makes a >viewport-tall element that mobile
+   Brave/Chromium mis-composites during scroll — old paint lingers and
+   the fee/guarantee cards appear to overlap content below. Drop sticky.
+   Placed AFTER the base rule so it wins in source order. */
+@media (max-width: 768px) {
+  .clarity-sidebar {
+    position: static;
+    top: auto;
+  }
+}
+
 .clarity-detail {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
