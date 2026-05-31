@@ -120,9 +120,15 @@
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-divider);
   transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  /* Force an isolated, GPU-composited layer so the blurred fixed header
+     repaints cleanly on mobile Chromium/Brave during scroll (prevents
+     stale text from "ghosting"/overlapping content as it scrolls under). */
+  transform: translateZ(0);
+  will-change: transform;
+  isolation: isolate;
 }
 
-.site-header--hidden { transform: translateY(-100%); }
+.site-header--hidden { transform: translate3d(0, -100%, 0); }
 
 .header-inner {
   display: flex;
