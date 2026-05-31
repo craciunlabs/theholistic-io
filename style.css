@@ -196,15 +196,13 @@
 .hero-image-bg {
   position: absolute;
   inset: 0;
-  /* Zoom in so the branded text in the centre of the image is cropped out;
-     only the dark atmospheric edges and texture remain visible */
+  /* Text-free dark atmospheric texture — covers cleanly on every viewport */
   background-image: url('./hero-bg.jpg');
-  background-size: 320%;
-  background-position: center 95%;
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   z-index: 0;
-  opacity: 0.35;
-  filter: brightness(0.6);
+  opacity: 0.6;
 }
 
 /* Overlay — gradient to blend edges cleanly */
