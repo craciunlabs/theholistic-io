@@ -252,6 +252,11 @@
             </div>
           </div>
 
+          <!-- Honeypot: hidden from humans, catches bots -->
+          <div style="position:absolute;left:-9999px;" aria-hidden="true">
+            <label>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+          </div>
+
           <div class="form-submit-area">
             <button type="submit" class="btn btn--primary" style="align-self: flex-start;">
               Submit application
@@ -345,7 +350,7 @@
   const form = document.getElementById('clarity-form');
   const success = document.getElementById('form-success');
 
-  form.addEventListener('submit', function(e) {
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
     // Basic validation
@@ -361,19 +366,43 @@
 
     if (!valid) return;
 
-    // Simulate submission — in production replace with fetch() to your backend/Formspree/etc.
     const btn = form.querySelector('[type="submit"]');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
+    const origLabel = btn ? btn.textContent : '';
+    if (btn) { btn.textContent = 'Sending\u2026'; btn.disabled = true; }
+    let errEl = form.querySelector('.form-error');
 
-    setTimeout(() => {
+    // Collect fields; checkboxes ("area") can have multiple values.
+    const fd = new FormData(form);
+    const data = {};
+    for (const key of new Set([...fd.keys()])) {
+      const all = fd.getAll(key);
+      data[key] = all.length > 1 ? all : all[0];
+    }
+    data.form = 'clarity';
+
+    try {
+      const resp = await fetch('/api/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (!resp.ok) throw new Error('Request failed');
       form.style.display = 'none';
       success.classList.add('visible');
       window.scrollTo({ top: success.offsetTop - 120, behavior: 'smooth' });
-    }, 800);
+    } catch (err) {
+      if (!errEl) {
+        errEl = document.createElement('p');
+        errEl.className = 'form-error';
+        errEl.style.cssText = 'color:#e0a0a0;margin-top:12px;font-size:14px;';
+        form.appendChild(errEl);
+      }
+      errEl.textContent = 'Something went wrong sending your application. Please try again, or email applications@theholistic.io directly.';
+      if (btn) { btn.disabled = false; btn.textContent = origLabel; }
+    }
   });
 })();
-</script></script>
+</script>
 
 </body>
 </html>

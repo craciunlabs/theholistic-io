@@ -333,10 +333,15 @@
               This is a guidance and integration service. The Diets take place in Peru and are held by an indigenous family operating under their own legal entity in the Amazon. The traditional work is entirely theirs — their knowledge, their authority, their tradition, and their separate fee. My role is preparation, accompaniment, and integration. Payment details are provided on acceptance.
             </p>
 
+            <!-- Honeypot: hidden from humans, catches bots -->
+            <div style="position:absolute;left:-9999px;" aria-hidden="true">
+              <label>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+            </div>
+
             <div class="form-submit-area">
               <button type="submit" class="btn btn--primary" style="align-self: flex-start; padding-inline: var(--space-12);">Submit Application</button>
               <p class="form-note">
-                I read every application personally. If this feels like the right fit, I will be in touch within 5 days to begin the conversation.
+                I read every application personally. If this feels like the right fit, I will be in touch within 48 hours to begin the conversation.
               </p>
             </div>
 
@@ -349,7 +354,7 @@
               <path d="M16 24l6 6 10-12" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <h2 class="success-title">Application received.</h2>
-            <p class="success-body">I will read this carefully and be in touch within 5 days if I believe this is the right fit. Thank you for trusting me with this.</p>
+            <p class="success-body">I will read this carefully and be in touch within 48 hours if I believe this is the right fit. Thank you for trusting me with this.</p>
           </div>
 
         </div>
@@ -418,11 +423,36 @@
   const form = document.getElementById('amazonian-form');
   const success = document.getElementById('form-success');
   if (form) {
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
-      form.style.display = 'none';
-      success.classList.add('visible');
-      window.scrollTo({ top: success.offsetTop - 120, behavior: 'smooth' });
+      const btn = form.querySelector('[type="submit"]');
+      const origLabel = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending\u2026'; }
+      let errEl = form.querySelector('.form-error');
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      data.form = 'amazonian';
+
+      try {
+        const resp = await fetch('/api/apply', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (!resp.ok) throw new Error('Request failed');
+        form.style.display = 'none';
+        success.classList.add('visible');
+        window.scrollTo({ top: success.offsetTop - 120, behavior: 'smooth' });
+      } catch (err) {
+        if (!errEl) {
+          errEl = document.createElement('p');
+          errEl.className = 'form-error';
+          errEl.style.cssText = 'color:#e0a0a0;margin-top:12px;font-size:14px;';
+          (form.querySelector('.form-submit-area') || form).appendChild(errEl);
+        }
+        errEl.textContent = 'Something went wrong sending your application. Please try again, or email applications@theholistic.io directly.';
+        if (btn) { btn.disabled = false; btn.textContent = origLabel; }
+      }
     });
   }
 })();
