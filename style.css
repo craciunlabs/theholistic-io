@@ -1764,3 +1764,47 @@
   .twodoors-door { padding: var(--space-6) var(--space-2); }
   .twodoors-divider { width: auto; height: 1px; }
 }
+
+/* ── Phase 3: Amazonian separate-fees breakdown card ── */
+.fee-breakdown {
+  border-color: oklch(from var(--color-primary) l c h / 0.30);
+}
+.fee-row {
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--color-divider);
+}
+.fee-row--last {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.fee-row:first-of-type {
+  padding-top: 0;
+}
+.fee-row-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.fee-row-label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+.fee-row-amount {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  color: var(--color-primary);
+  line-height: 1.1;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.fee-row-sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+  line-height: 1.55;
+}

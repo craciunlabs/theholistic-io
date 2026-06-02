@@ -67,10 +67,35 @@
       <!-- SIDEBAR -->
       <aside class="clarity-sidebar">
 
-        <div class="clarity-detail">
-          <p class="clarity-detail-label">My fee — guidance &amp; integration</p>
-          <p class="clarity-detail-value">$2,500</p>
-          <p class="clarity-detail-sub">This is my fee, for everything from the first call through to your final integration session a year later. The maestro&rsquo;s fee for the Diets is separate and paid directly to him (see below). Payment details are provided on acceptance — bank transfer and international options available.</p>
+        <div class="clarity-detail fee-breakdown">
+          <p class="clarity-detail-label">What this costs</p>
+          <p class="clarity-detail-sub" style="margin-top: 0; margin-bottom: var(--space-5);">Three separate costs, paid to three different people. I never combine them, and I never collect the maestro&rsquo;s fee.</p>
+
+          <div class="fee-row">
+            <div class="fee-row-head">
+              <span class="fee-row-label">My fee &mdash; guidance &amp; integration</span>
+              <span class="fee-row-amount">$2,500</span>
+            </div>
+            <p class="fee-row-sub">Everything from the first call through to your final integration session a year later. Paid to me.</p>
+          </div>
+
+          <div class="fee-row">
+            <div class="fee-row-head">
+              <span class="fee-row-label">The maestro&rsquo;s fee &mdash; the Diets</span>
+              <span class="fee-row-amount">Separate</span>
+            </div>
+            <p class="fee-row-sub">For the traditional work itself. Paid directly to the indigenous family in Peru, in cash, on arrival. It does not pass through me. Their work, their tradition, their fee. Amount confirmed with your date.</p>
+          </div>
+
+          <div class="fee-row fee-row--last">
+            <div class="fee-row-head">
+              <span class="fee-row-label">Travel &mdash; flights &amp; on-the-ground</span>
+              <span class="fee-row-amount">Separate</span>
+            </div>
+            <p class="fee-row-sub">Your flights to Peru and travel costs are your own, arranged with my help. I guide the logistics; I do not mark them up.</p>
+          </div>
+
+          <p class="clarity-detail-sub" style="margin-top: var(--space-5);">Payment details for my fee are provided on acceptance &mdash; bank transfer and international options available.</p>
         </div>
 
         <div class="clarity-detail guarantee-block">
@@ -151,13 +176,19 @@
           <p class="section-label">The diets</p>
           <div style="display: flex; flex-direction: column; gap: var(--space-6);">
             <p style="font-size: var(--text-base); font-weight: 300; line-height: 1.75; color: var(--color-text-muted);">
-              Plant diets — sanango, Capirona, Bobinsana, the palos — are the core of this work. They are not psychoactive. They are protocols: a strict combination of plant preparation, isolation, dietary restriction, and behavioral discipline that the Amazonian tradition has refined over centuries.
+              Plant diets &mdash; sanango, Capirona, Bobinsana, the palos &mdash; are the core of this work. They are not psychoactive. They are protocols: a strict combination of plant preparation, isolation, dietary restriction, and behavioral discipline that the Amazonian tradition has refined over centuries.
             </p>
             <p style="font-size: var(--text-base); font-weight: 300; line-height: 1.75; color: var(--color-text-muted);">
-              Each plant works differently. Sanango roots out what is lodged at the cellular level — memory, pattern, chronic tension. Bobinsana opens what has been closed, particularly around the heart and the capacity to receive. The palos, the tree barks, work slowly and structurally — they are Don Alberto's specific lineage as a Palero, a master of tree medicines. What they have in common is that they are not an experience you have and return from. They build something in you that wasn't there before.
+              The Diet is a ceremonial process, in the proper, traditional sense of that word. It does not begin when you arrive and end when you leave. The maestro and his family prepare it by hand &mdash; walking the forest to collect the roots and the tree bark, then preparing each plant the way their lineage has always prepared it. Nothing about it is industrial. It is slow, deliberate, and old.
             </p>
             <p style="font-size: var(--text-base); font-weight: 300; line-height: 1.75; color: var(--color-text-muted);">
-              The deeper traditional work, if a client is called to it, comes afterward — as a conclusion to a process already well underway, and entirely in the family&rsquo;s hands. Some are. Some aren&rsquo;t. The Diets carry the work either way.
+              For the duration of the Diet you hold a strict set of restrictions &mdash; in what you eat, in how you live, in what you keep away from. This is not arbitrary discipline. The restriction is what lets the plant do its work; the boundaries are part of the medicine. The maestro opens your Diet with an icaro, the sung medicine of his tradition, and it is his icaros that hold and direct the work throughout. When the Diet is complete, he closes it with a major icaro, and you conclude the process in the traditional way &mdash; by taking salt, which formally lifts the restrictions and seals what the plant has done. There is a beginning, a middle, and a clear, ceremonial end.
+            </p>
+            <p style="font-size: var(--text-base); font-weight: 300; line-height: 1.75; color: var(--color-text-muted);">
+              Each plant works differently. Sanango roots out what is lodged at the cellular level &mdash; memory, pattern, chronic tension. Bobinsana opens what has been closed, particularly around the heart and the capacity to receive. The palos, the tree barks, work slowly and structurally &mdash; they are Don Alberto&rsquo;s specific lineage as a Palero, a master of tree medicines. What they have in common is that they are not an experience you have and return from. They build something in you that wasn&rsquo;t there before.
+            </p>
+            <p style="font-size: var(--text-base); font-weight: 300; line-height: 1.75; color: var(--color-text-muted);">
+              The deeper traditional work, if a client is called to it, comes afterward &mdash; as a conclusion to a process already well underway, and entirely in the family&rsquo;s hands. Some are. Some aren&rsquo;t. The Diets carry the work either way.
             </p>
           </div>
         </div>
@@ -321,9 +352,9 @@
             <div class="form-group">
               <label class="form-label" for="health">
                 Anything relevant about your current health or mental health?
-                <span class="form-label-sub">Confidential. Helps me assess whether this is appropriate for you right now.</span>
+                <span class="form-label-sub">Confidential, and required. The Diet asks a lot of the body and the nervous system, and some conditions and medications make it unsafe. Telling me honestly is how I keep you safe &mdash; nothing here disqualifies you on its own. If there is genuinely nothing, write &lsquo;Nothing to note&rsquo;.</span>
               </label>
-              <textarea class="form-textarea" id="health" name="health" rows="3" style="min-height: 100px;"></textarea>
+              <textarea class="form-textarea" id="health" name="health" rows="3" style="min-height: 100px;" required></textarea>
             </div>
 
             <hr class="form-divider">
