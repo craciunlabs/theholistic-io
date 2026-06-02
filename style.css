@@ -294,7 +294,20 @@
   line-height: 1.6;
   color: var(--color-text-muted);
   max-width: 44ch;
+  margin: 0 auto var(--space-5);
+}
+
+/* Hero disambiguator — names the actual territory; separates us from productivity "deep work" */
+.hero-disambiguator {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--color-text-muted);
+  max-width: 52ch;
   margin: 0 auto var(--space-10);
+  opacity: 0.85;
 }
 
 .hero-cta-group {
@@ -1691,4 +1704,63 @@
   line-height: 1.7;
   color: var(--color-text-muted);
   max-width: 50ch;
+}
+
+/* ============================================
+   TWO DOORS STRIP (wayfinding under hero)
+   ============================================ */
+.twodoors-strip {
+  border-top: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-divider);
+  background: var(--color-surface);
+}
+.twodoors-row {
+  display: flex;
+  align-items: stretch;
+}
+.twodoors-door {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-8) var(--space-6);
+  text-decoration: none;
+  transition: background var(--transition-interactive);
+}
+.twodoors-door:hover {
+  background: oklch(from var(--color-primary) l c h / 0.05);
+}
+.twodoors-tag {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+.twodoors-name {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+.twodoors-line {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  max-width: 38ch;
+}
+.twodoors-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--color-divider);
+  flex-shrink: 0;
+}
+@media (max-width: 700px) {
+  .twodoors-row { flex-direction: column; }
+  .twodoors-door { padding: var(--space-6) var(--space-2); }
+  .twodoors-divider { width: auto; height: 1px; }
 }
