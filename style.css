@@ -1092,7 +1092,7 @@
   font-weight: 300;
   line-height: 1.65;
   color: var(--color-text-muted);
-  max-width: 58ch;
+  max-width: 680px;
 }
 
 /* Info blocks */
