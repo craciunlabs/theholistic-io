@@ -49,42 +49,29 @@ function buildOwnerHtml(formKey, data) {
   const name = (data.name || '').trim();
   const email = (data.email || '').trim();
 
-  // Identity block (name + email) sits at the top, distinct from the body answers.
-  // The remaining fields render as quiet label-over-answer blocks for easy reading.
   const bodyKeys = Object.keys(data).filter(
     (k) => k !== 'form' && k !== '_gotcha' && k !== 'name' && k !== 'email'
   );
 
-  const blocks = bodyKeys.map((k) => {
+  const rows = bodyKeys.map((k) => {
     const label = FIELD_LABELS[k] || k;
     const val = esc(fmtValue(data[k])).replace(/\n/g, '<br>');
-    return `<tr><td style="padding:18px 30px 0;">
-        <div style="font:600 11px/1.4 -apple-system,Segoe UI,Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8a7d63;">${esc(label)}</div>
-        <div style="margin-top:6px;font:400 15px/1.65 -apple-system,Segoe UI,Inter,sans-serif;color:#ece6da;">${val}</div>
-      </td></tr>`;
+    return `<p style="margin:0 0 16px;">
+        <strong style="display:block;font-size:13px;color:#666;font-weight:600;margin-bottom:2px;">${esc(label)}</strong>
+        <span style="font-size:15px;color:#222;line-height:1.5;">${val}</span>
+      </p>`;
   }).join('');
 
-  return `<!doctype html><html><body style="margin:0;background:#0d0c0a;padding:28px 16px;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:580px;margin:0 auto;background:#14110d;border:1px solid #2a251d;border-radius:14px;overflow:hidden;">
-
-      <tr><td style="padding:28px 30px 22px;border-bottom:1px solid #221e18;">
-        <div style="font:600 11px/1 -apple-system,Segoe UI,Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#c9a84c;">New application</div>
-        <div style="margin-top:10px;font:500 25px/1.25 Georgia,'Times New Roman',serif;color:#f5f0e8;letter-spacing:.01em;">${esc(title)}</div>
-      </td></tr>
-
-      <tr><td style="padding:24px 30px 4px;">
-        <div style="font:500 19px/1.3 Georgia,'Times New Roman',serif;color:#f5f0e8;">${esc(name) || 'Someone'}</div>
-        <a href="mailto:${esc(email)}" style="display:inline-block;margin-top:4px;font:400 14px/1.5 -apple-system,Segoe UI,Inter,sans-serif;color:#c9a84c;text-decoration:none;">${esc(email)}</a>
-      </td></tr>
-
-      ${blocks}
-
-      <tr><td style="padding:26px 30px 30px;">
-        <a href="mailto:${esc(email)}" style="display:inline-block;background:#c9a84c;color:#1a1710;text-decoration:none;font:600 14px/1 -apple-system,Segoe UI,Inter,sans-serif;letter-spacing:.01em;padding:13px 22px;border-radius:9px;">Reply to ${esc(name.split(/\s+/)[0] || 'applicant')}</a>
-        <div style="margin-top:12px;font:400 12px/1.5 -apple-system,Segoe UI,Inter,sans-serif;color:#6f6553;">Or just hit reply — your response goes straight to ${esc(email) || 'the applicant'}.</div>
-      </td></tr>
-
-    </table>
+  // Plain, fast-to-scan layout — this email is only ever read by the owner.
+  return `<!doctype html><html><body style="margin:0;background:#fff;">
+    <div style="max-width:560px;margin:0 auto;padding:28px 24px;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">
+      <p style="margin:0 0 2px;font-size:13px;color:#888;">New ${esc(title)} application</p>
+      <p style="margin:0;font-size:20px;font-weight:600;color:#111;">${esc(name) || 'Someone'}</p>
+      <p style="margin:2px 0 20px;"><a href="mailto:${esc(email)}" style="font-size:15px;color:#0a66c2;text-decoration:none;">${esc(email)}</a></p>
+      <hr style="border:none;border-top:1px solid #eee;margin:0 0 20px;">
+      ${rows}
+      <p style="margin:20px 0 0;font-size:13px;color:#999;">Just hit reply — it goes straight to ${esc(email) || 'the applicant'}.</p>
+    </div>
   </body></html>`;
 }
 
