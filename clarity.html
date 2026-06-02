@@ -120,136 +120,14 @@
 
       <!-- FORM -->
       <div>
-        <form class="application-form" id="clarity-form" novalidate>
+        <form class="application-form stepflow" id="clarity-form" novalidate>
 
-          <div class="form-group">
-            <label class="form-label" for="name">
-              Your name
-            </label>
-            <input class="form-input" type="text" id="name" name="name" placeholder="First and last name" required autocomplete="name">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="email">
-              Email address
-            </label>
-            <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
-          </div>
-
-          <hr class="form-divider">
-
-          <div class="form-group">
-            <label class="form-label" for="about">
-              Who are you?
-              <span class="form-label-sub">Doesn't have to be a job title — describe yourself in your own words.</span>
-            </label>
-            <textarea class="form-textarea" id="about" name="about" placeholder="I'm a..." rows="3" required></textarea>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="situation">
-              What's the situation you're facing right now?
-              <span class="form-label-sub">What made you look for this?</span>
-            </label>
-            <textarea class="form-textarea" id="situation" name="situation" placeholder="Right now I'm dealing with..." rows="4" required></textarea>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="outcome">
-              What would a successful session look like?
-              <span class="form-label-sub">What would you walk away with?</span>
-            </label>
-            <textarea class="form-textarea" id="outcome" name="outcome" placeholder="I'd walk away with..." rows="3" required></textarea>
-          </div>
-
-          <hr class="form-divider">
-
-          <div class="form-group">
-            <label class="form-label">
-              Which area does this sit in?
-              <span class="form-label-sub">Select all that apply.</span>
-            </label>
-            <div class="checkbox-group">
-              <label class="checkbox-item">
-                <input type="checkbox" name="area" value="pattern">
-                <span class="checkbox-item-label">A pattern that keeps coming back</span>
-              </label>
-              <label class="checkbox-item">
-                <input type="checkbox" name="area" value="deep-work">
-                <span class="checkbox-item-label">Preparing for or integrating deep work</span>
-              </label>
-              <label class="checkbox-item">
-                <input type="checkbox" name="area" value="spiritual">
-                <span class="checkbox-item-label">Spiritual direction</span>
-              </label>
-              <label class="checkbox-item">
-                <input type="checkbox" name="area" value="personal">
-                <span class="checkbox-item-label">Personal development</span>
-              </label>
-              <label class="checkbox-item">
-                <input type="checkbox" name="area" value="work">
-                <span class="checkbox-item-label">Direction in work or career</span>
-              </label>
-              <label class="checkbox-item">
-                <input type="checkbox" name="area" value="other">
-                <span class="checkbox-item-label">Something else — I'll describe below</span>
-              </label>
+          <!-- Progress -->
+          <div class="stepflow-progress">
+            <div class="stepflow-progress-track" role="presentation">
+              <div class="stepflow-progress-fill" id="sf-fill"></div>
             </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="prior">
-              Have you worked with a coach, consultant, or mentor before?
-            </label>
-            <select class="form-select" id="prior" name="prior">
-              <option value="" disabled selected>Select one</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-              <option value="similar">Something similar</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="availability">
-              What's your availability in the next 2–3 weeks?
-            </label>
-            <input class="form-input" type="text" id="availability" name="availability" placeholder="e.g. Weekday mornings, or specific dates/times">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="anything-else">
-              Anything else you want me to know?
-              <span class="form-label-sub">Optional.</span>
-            </label>
-            <textarea class="form-textarea" id="anything-else" name="anything-else" placeholder="Anything relevant I should know before I review this..." rows="3"></textarea>
-          </div>
-
-          <hr class="form-divider">
-
-          <!-- TESTIMONIAL STRIP -->
-          <div class="testimonial-strip-wrap">
-            <div class="testimonial-strip" id="testimonial-strip">
-              <div class="testimonial-strip-item">
-                <p class="testimonial-strip-quote">"He knows both worlds — the spiritual and the 'normal' societal one — and bridges them with rare authenticity."</p>
-                <span class="testimonial-strip-name">Alen Oberlechner — Professional medium, Austria</span>
-              </div>
-              <div class="testimonial-strip-item">
-                <p class="testimonial-strip-quote">"I owe a lot of finding my voice to Claudiu. He has been the wise and kind eye to help me figure out my next steps."</p>
-                <span class="testimonial-strip-name">Bio Vidigal — Solopreneur, Brazil</span>
-              </div>
-              <div class="testimonial-strip-item" style="border-bottom: none; padding-bottom: 0;">
-                <p class="testimonial-strip-quote">"His perspective and life experience WILL benefit you."</p>
-                <span class="testimonial-strip-name">Matthew Ferguson</span>
-              </div>
-            </div>
-            <div class="testimonial-strip-fade">
-              <button class="testimonial-strip-scroll-btn" id="strip-scroll-btn" aria-label="Scroll down to submit">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 5v14M5 12l7 7 7-7"/>
-                </svg>
-                <span>Submit below</span>
-              </button>
-            </div>
+            <span class="stepflow-progress-label" id="sf-progress-label">Step 1 of 4</span>
           </div>
 
           <!-- Honeypot: hidden from humans, catches bots -->
@@ -257,17 +135,74 @@
             <label>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
           </div>
 
-          <div class="form-submit-area">
-            <button type="submit" class="btn btn--primary" style="align-self: flex-start;">
-              Submit application
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
+          <!-- STEP 1 — tap, qualifies -->
+          <fieldset class="stepflow-step is-active" data-step="1">
+            <legend class="stepflow-legend">What are you carrying right now?</legend>
+            <p class="stepflow-help" id="sf-help-1">Choose the one that fits best. There's no wrong answer — it just helps me understand where you are.</p>
+            <div class="stepflow-options" role="radiogroup" aria-labelledby="sf-help-1" data-field="focus" data-required="true">
+              <button type="button" class="stepflow-option" role="radio" aria-checked="false" data-value="A pattern that keeps coming back"><span class="stepflow-option-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>A pattern that keeps coming back</button>
+              <button type="button" class="stepflow-option" role="radio" aria-checked="false" data-value="A decision I keep circling"><span class="stepflow-option-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>A decision I keep circling</button>
+              <button type="button" class="stepflow-option" role="radio" aria-checked="false" data-value="Preparing for, or integrating, deep work"><span class="stepflow-option-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Preparing for, or integrating, deep work</button>
+              <button type="button" class="stepflow-option" role="radio" aria-checked="false" data-value="Spiritual direction"><span class="stepflow-option-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Spiritual direction</button>
+              <button type="button" class="stepflow-option" role="radio" aria-checked="false" data-value="Something personal"><span class="stepflow-option-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Something personal</button>
+              <button type="button" class="stepflow-option" role="radio" aria-checked="false" data-value="Something else"><span class="stepflow-option-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Something else</button>
+            </div>
+            <input type="hidden" name="focus" id="sf-focus">
+          </fieldset>
+
+          <!-- STEP 2 — tap -->
+          <fieldset class="stepflow-step" data-step="2">
+            <legend class="stepflow-legend">Have you worked with a guide, coach, or mentor before?</legend>
+            <p class="stepflow-help" id="sf-help-2">Either way is fine. It just tells me what you're used to.</p>
+            <div class="stepflow-options" role="radiogroup" aria-labelledby="sf-help-2" data-field="prior" data-required="true">
+              <button type="button" class="stepflow-option" role="radio" aria-checked="false" data-value="Yes"><span class="stepflow-option-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Yes</button>
+              <button type="button" class="stepflow-option" role="radio" aria-checked="false" data-value="A little"><span class="stepflow-option-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>A little</button>
+              <button type="button" class="stepflow-option" role="radio" aria-checked="false" data-value="No"><span class="stepflow-option-check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>No</button>
+            </div>
+            <input type="hidden" name="prior" id="sf-prior">
+          </fieldset>
+
+          <!-- STEP 3 — optional short text -->
+          <fieldset class="stepflow-step" data-step="3">
+            <legend class="stepflow-legend">In a sentence or two — what's the situation?</legend>
+            <p class="stepflow-help" id="sf-help-3">Optional. A line is plenty. Write only what you're comfortable sharing.</p>
+            <div class="stepflow-field">
+              <label class="sr-only" for="situation">In a sentence or two, what's the situation?</label>
+              <textarea class="form-textarea" id="situation" name="situation" placeholder="What's bringing you here…" rows="4" aria-describedby="sf-help-3"></textarea>
+            </div>
+          </fieldset>
+
+          <!-- STEP 4 — name + email (last) -->
+          <fieldset class="stepflow-step" data-step="4">
+            <legend class="stepflow-legend">Where do I write back?</legend>
+            <p class="stepflow-help" id="sf-help-4">I'll only use this to reply to you. Nothing else.</p>
+            <div class="stepflow-field">
+              <label class="form-label" for="name">Your name</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="First and last name" autocomplete="name" required aria-describedby="sf-help-4">
+            </div>
+            <div class="stepflow-field">
+              <label class="form-label" for="email">Email address</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" required>
+            </div>
+          </fieldset>
+
+          <!-- NAV -->
+          <div class="stepflow-nav">
+            <button type="button" class="stepflow-back" id="sf-back" hidden>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              Back
             </button>
-            <p class="form-note">
-              I read every application personally and respond within 48 hours. If I can help you, you'll receive a booking link. If I can't, I'll tell you that directly. No automated responses.
-            </p>
+            <button type="button" class="btn btn--primary stepflow-next" id="sf-next">
+              Continue
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
           </div>
+
+          <p class="stepflow-error" id="sf-error" role="alert" aria-live="assertive"></p>
+
+          <p class="stepflow-note">
+            I read every application personally. No automated responses, no sales sequence. If it's a fit, I write back myself.
+          </p>
 
         </form>
 
@@ -337,47 +272,213 @@
     lastScroll = current;
   }, { passive: true });
 
-  // Scroll-to-submit nudge button
-  const stripBtn = document.getElementById('strip-scroll-btn');
-  if (stripBtn) {
-    stripBtn.addEventListener('click', () => {
-      const submitArea = document.querySelector('.form-submit-area');
-      if (submitArea) submitArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  /* ============================================
+     STEP-FLOW CONTROLLER
+     ============================================ */
+  const form     = document.getElementById('clarity-form');
+  const success  = document.getElementById('form-success');
+  if (!form) return;
+
+  const steps    = Array.from(form.querySelectorAll('.stepflow-step'));
+  const TOTAL    = steps.length;
+  const fill     = document.getElementById('sf-fill');
+  const progLbl  = document.getElementById('sf-progress-label');
+  const backBtn  = document.getElementById('sf-back');
+  const nextBtn  = document.getElementById('sf-next');
+  const errEl    = document.getElementById('sf-error');
+  const STORE_KEY = 'theholistic_clarity_v1';
+
+  let current = 1; // 1-based step index
+
+  /* ---- localStorage auto-save / restore ---- */
+  function saveState() {
+    try {
+      const fd = new FormData(form);
+      const data = {};
+      fd.forEach((v, k) => { if (k !== '_gotcha') data[k] = v; });
+      localStorage.setItem(STORE_KEY, JSON.stringify({ step: current, data }));
+    } catch (e) { /* ignore quota / privacy mode */ }
+  }
+  function restoreState() {
+    let saved;
+    try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || 'null'); }
+    catch (e) { saved = null; }
+    if (!saved || !saved.data) return;
+    Object.entries(saved.data).forEach(([k, val]) => {
+      // hidden tap-fields (focus/prior) -> reselect matching option
+      const group = form.querySelector('.stepflow-options[data-field="' + k + '"]');
+      if (group) {
+        const hidden = form.querySelector('#sf-' + k) || form.querySelector('[name="' + k + '"]');
+        if (hidden) hidden.value = val;
+        group.querySelectorAll('.stepflow-option').forEach(opt => {
+          const match = opt.getAttribute('data-value') === val;
+          opt.classList.toggle('is-selected', match);
+          opt.setAttribute('aria-checked', match ? 'true' : 'false');
+        });
+        return;
+      }
+      const field = form.querySelector('[name="' + k + '"]');
+      if (field && field.type !== 'hidden') field.value = val;
     });
+    if (saved.step >= 1 && saved.step <= TOTAL) current = saved.step;
+  }
+  function clearState() {
+    try { localStorage.removeItem(STORE_KEY); } catch (e) {}
   }
 
-  // Form submission
-  const form = document.getElementById('clarity-form');
-  const success = document.getElementById('form-success');
+  /* ---- render the current step ---- */
+  function render(focusFirst) {
+    steps.forEach(s => {
+      const n = Number(s.getAttribute('data-step'));
+      s.classList.toggle('is-active', n === current);
+    });
+    const pct = Math.round((current / TOTAL) * 100);
+    if (fill) fill.style.width = pct + '%';
+    if (progLbl) progLbl.textContent = 'Step ' + current + ' of ' + TOTAL;
 
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
+    if (backBtn) backBtn.hidden = (current === 1);
+    if (nextBtn) {
+      const isLast = (current === TOTAL);
+      nextBtn.innerHTML = isLast
+        ? 'Submit application'
+        : 'Continue <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    }
+    clearError();
 
-    // Basic validation
-    const required = form.querySelectorAll('[required]');
-    let valid = true;
-    required.forEach(field => {
-      if (!field.value.trim()) {
-        valid = false;
-        field.style.borderColor = '#C9A84C';
-        field.addEventListener('input', () => { field.style.borderColor = ''; }, { once: true });
+    if (focusFirst) {
+      const active = steps.find(s => Number(s.getAttribute('data-step')) === current);
+      if (active) {
+        const target = active.querySelector('.stepflow-option, input, textarea');
+        if (target) target.focus({ preventScroll: true });
+      }
+    }
+  }
+
+  /* ---- errors (aria-live) ---- */
+  function showError(msg) { if (errEl) errEl.textContent = msg; }
+  function clearError() { if (errEl) errEl.textContent = ''; }
+
+  /* ---- tap-option (radio) behaviour ---- */
+  form.querySelectorAll('.stepflow-options').forEach(group => {
+    const field = group.getAttribute('data-field');
+    const hidden = form.querySelector('#sf-' + field);
+    const opts = Array.from(group.querySelectorAll('.stepflow-option'));
+
+    function select(opt) {
+      opts.forEach(o => {
+        const on = (o === opt);
+        o.classList.toggle('is-selected', on);
+        o.setAttribute('aria-checked', on ? 'true' : 'false');
+        o.tabIndex = on ? 0 : -1;
+      });
+      if (hidden) hidden.value = opt.getAttribute('data-value');
+      clearError();
+      saveState();
+    }
+
+    opts.forEach((opt, i) => {
+      opt.tabIndex = i === 0 ? 0 : -1;
+      opt.addEventListener('click', () => select(opt));
+      opt.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          select(opt);
+        } else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+          e.preventDefault();
+          const next = opts[(i + 1) % opts.length];
+          next.focus(); select(next);
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const prev = opts[(i - 1 + opts.length) % opts.length];
+          prev.focus(); select(prev);
+        }
+      });
+    });
+  });
+
+  /* ---- text/email inputs: save + validate on blur ---- */
+  form.querySelectorAll('input, textarea').forEach(el => {
+    if (el.name === '_gotcha') return;
+    el.addEventListener('blur', () => {
+      saveState();
+      if (el.type === 'email' && el.value.trim() && !isEmail(el.value.trim())) {
+        showError('That email doesn\u2019t look right \u2014 mind checking it?');
       }
     });
+    el.addEventListener('input', clearError);
+  });
 
-    if (!valid) return;
+  function isEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
 
-    const btn = form.querySelector('[type="submit"]');
-    const origLabel = btn ? btn.textContent : '';
-    if (btn) { btn.textContent = 'Sending\u2026'; btn.disabled = true; }
-    let errEl = form.querySelector('.form-error');
+  /* ---- validate the current step ---- */
+  function validateStep() {
+    const active = steps.find(s => Number(s.getAttribute('data-step')) === current);
+    if (!active) return true;
 
-    // Collect fields; checkboxes ("area") can have multiple values.
+    // required tap-group
+    const group = active.querySelector('.stepflow-options[data-required="true"]');
+    if (group) {
+      const field = group.getAttribute('data-field');
+      const hidden = form.querySelector('#sf-' + field);
+      if (!hidden || !hidden.value) {
+        showError('Choose the one that fits best to continue.');
+        return false;
+      }
+    }
+
+    // required text inputs (final step: name + email)
+    const reqInputs = Array.from(active.querySelectorAll('[required]'));
+    for (const el of reqInputs) {
+      if (!el.value.trim()) {
+        showError(el.type === 'email' ? 'I\u2019ll need an email to write back to.' : 'Please add your name so I know who I\u2019m writing to.');
+        el.focus();
+        return false;
+      }
+      if (el.type === 'email' && !isEmail(el.value.trim())) {
+        showError('That email doesn\u2019t look right \u2014 mind checking it?');
+        el.focus();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /* ---- navigation ---- */
+  backBtn && backBtn.addEventListener('click', () => {
+    if (current > 1) { current--; render(true); saveState(); }
+  });
+
+  nextBtn && nextBtn.addEventListener('click', () => {
+    if (!validateStep()) return;
+    if (current < TOTAL) {
+      current++;
+      render(true);
+      saveState();
+    } else {
+      submit();
+    }
+  });
+
+  // Enter key on text inputs advances (except textarea, which keeps newlines)
+  form.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && e.target.classList.contains('form-input')) {
+      e.preventDefault();
+      nextBtn && nextBtn.click();
+    }
+  });
+
+  /* ---- submit ---- */
+  async function submit() {
+    const origLabel = nextBtn.innerHTML;
+    nextBtn.innerHTML = 'Sending\u2026';
+    nextBtn.disabled = true;
+    clearError();
+
     const fd = new FormData(form);
     const data = {};
-    for (const key of new Set([...fd.keys()])) {
-      const all = fd.getAll(key);
-      data[key] = all.length > 1 ? all : all[0];
-    }
+    fd.forEach((v, k) => { data[k] = v; });
     data.form = 'clarity';
 
     try {
@@ -387,20 +488,22 @@
         body: JSON.stringify(data)
       });
       if (!resp.ok) throw new Error('Request failed');
+      clearState();
       form.style.display = 'none';
       success.classList.add('visible');
-      window.scrollTo({ top: success.offsetTop - 120, behavior: 'smooth' });
+      success.setAttribute('tabindex', '-1');
+      success.focus({ preventScroll: true });
+      window.scrollTo({ top: Math.max(0, success.getBoundingClientRect().top + window.scrollY - 140), behavior: 'smooth' });
     } catch (err) {
-      if (!errEl) {
-        errEl = document.createElement('p');
-        errEl.className = 'form-error';
-        errEl.style.cssText = 'color:#e0a0a0;margin-top:12px;font-size:14px;';
-        form.appendChild(errEl);
-      }
-      errEl.textContent = 'Something went wrong sending your application. Please try again, or email applications@theholistic.io directly.';
-      if (btn) { btn.disabled = false; btn.textContent = origLabel; }
+      showError('Something went wrong sending your application. Please try again, or email applications@theholistic.io directly.');
+      nextBtn.innerHTML = origLabel;
+      nextBtn.disabled = false;
     }
-  });
+  }
+
+  /* ---- init ---- */
+  restoreState();
+  render(false);
 })();
 </script>
 
