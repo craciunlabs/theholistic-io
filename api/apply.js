@@ -46,30 +46,44 @@ function fmtValue(v) {
 
 function buildOwnerHtml(formKey, data) {
   const title = FORM_TITLES[formKey] || 'Application';
-  const rows = Object.keys(data)
-    .filter((k) => k !== 'form' && k !== '_gotcha')
-    .map((k) => {
-      const label = FIELD_LABELS[k] || k;
-      const val = esc(fmtValue(data[k])).replace(/\n/g, '<br>');
-      return `<tr>
-        <td style="padding:10px 14px;vertical-align:top;width:34%;color:#8a7d63;font:600 13px/1.4 -apple-system,Segoe UI,Inter,sans-serif;border-bottom:1px solid #1f1c17;">${esc(label)}</td>
-        <td style="padding:10px 14px;vertical-align:top;color:#ece6da;font:400 14px/1.55 -apple-system,Segoe UI,Inter,sans-serif;border-bottom:1px solid #1f1c17;">${val}</td>
-      </tr>`;
-    }).join('');
+  const name = (data.name || '').trim();
+  const email = (data.email || '').trim();
 
-  return `<!doctype html><html><body style="margin:0;background:#0e0c0a;padding:24px;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:620px;margin:0 auto;background:#14110d;border:1px solid #2a251d;border-radius:12px;overflow:hidden;">
-      <tr><td style="padding:22px 24px;border-bottom:1px solid #2a251d;">
-        <div style="font:600 12px/1 -apple-system,Segoe UI,Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#c9a35b;">New Application</div>
-        <div style="margin-top:6px;font:500 20px/1.3 Georgia,'Times New Roman',serif;color:#f3eee2;">${esc(title)}</div>
+  // Identity block (name + email) sits at the top, distinct from the body answers.
+  // The remaining fields render as quiet label-over-answer blocks for easy reading.
+  const bodyKeys = Object.keys(data).filter(
+    (k) => k !== 'form' && k !== '_gotcha' && k !== 'name' && k !== 'email'
+  );
+
+  const blocks = bodyKeys.map((k) => {
+    const label = FIELD_LABELS[k] || k;
+    const val = esc(fmtValue(data[k])).replace(/\n/g, '<br>');
+    return `<tr><td style="padding:18px 30px 0;">
+        <div style="font:600 11px/1.4 -apple-system,Segoe UI,Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8a7d63;">${esc(label)}</div>
+        <div style="margin-top:6px;font:400 15px/1.65 -apple-system,Segoe UI,Inter,sans-serif;color:#ece6da;">${val}</div>
+      </td></tr>`;
+  }).join('');
+
+  return `<!doctype html><html><body style="margin:0;background:#0d0c0a;padding:28px 16px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:580px;margin:0 auto;background:#14110d;border:1px solid #2a251d;border-radius:14px;overflow:hidden;">
+
+      <tr><td style="padding:28px 30px 22px;border-bottom:1px solid #221e18;">
+        <div style="font:600 11px/1 -apple-system,Segoe UI,Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#c9a84c;">New application</div>
+        <div style="margin-top:10px;font:500 25px/1.25 Georgia,'Times New Roman',serif;color:#f5f0e8;letter-spacing:.01em;">${esc(title)}</div>
       </td></tr>
-      <tr><td style="padding:6px 10px 14px;">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows}</table>
+
+      <tr><td style="padding:24px 30px 4px;">
+        <div style="font:500 19px/1.3 Georgia,'Times New Roman',serif;color:#f5f0e8;">${esc(name) || 'Someone'}</div>
+        <a href="mailto:${esc(email)}" style="display:inline-block;margin-top:4px;font:400 14px/1.5 -apple-system,Segoe UI,Inter,sans-serif;color:#c9a84c;text-decoration:none;">${esc(email)}</a>
       </td></tr>
-      <tr><td style="padding:14px 24px 22px;">
-        <a href="mailto:${esc(data.email || '')}" style="display:inline-block;background:#c9a35b;color:#14110d;text-decoration:none;font:600 14px/1 -apple-system,Segoe UI,Inter,sans-serif;padding:11px 18px;border-radius:8px;">Reply to ${esc(data.name || 'applicant')}</a>
-        <div style="margin-top:10px;font:400 12px/1.5 -apple-system,Segoe UI,Inter,sans-serif;color:#6f6553;">Just hit reply to this email — it goes straight to the applicant.</div>
+
+      ${blocks}
+
+      <tr><td style="padding:26px 30px 30px;">
+        <a href="mailto:${esc(email)}" style="display:inline-block;background:#c9a84c;color:#1a1710;text-decoration:none;font:600 14px/1 -apple-system,Segoe UI,Inter,sans-serif;letter-spacing:.01em;padding:13px 22px;border-radius:9px;">Reply to ${esc(name.split(/\s+/)[0] || 'applicant')}</a>
+        <div style="margin-top:12px;font:400 12px/1.5 -apple-system,Segoe UI,Inter,sans-serif;color:#6f6553;">Or just hit reply — your response goes straight to ${esc(email) || 'the applicant'}.</div>
       </td></tr>
+
     </table>
   </body></html>`;
 }
