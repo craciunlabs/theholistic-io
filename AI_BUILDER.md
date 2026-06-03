@@ -50,6 +50,63 @@ method copy is correct and stays; it just needs a heartbeat above it.
 When the **origin video** exists, it becomes the site's "Start here" — the man in his own voice,
 before any written copy.
 
+### 3.1 LOCKED DECISION (June 3, 2026) — how explicit, where, which site
+
+Founder's call, settled. Build to this:
+
+- **Register: DIGNIFIED.** Tell the lowest point through its WEIGHT, not the clinical word. "There came
+  a point where I genuinely couldn't see a reason to keep going" — not the literal term. The cold website
+  cannot hold the plain word the way the founder's own voice can; the *video* carries the full weight, the
+  *site* points to it. Anyone who has been there understands the dignified line; strangers aren't alarmed.
+- **A support line sits nearby** wherever the bottom is named (HARD RULE 7). Muted footer style:
+  *"If you're struggling, you're not alone. Help is available anywhere in the world — findahelpline.com"*
+- **Three placements (one system, not competing):** (1) a short hero "heartbeat" line under the existing
+  headline, (2) a rewritten About section, (3) a "Start here" slot for the origin video (live once the
+  video exists; a tasteful "coming soon" card or commented-out slot until then — never a broken embed).
+- **theholistic.io ONLY.** Do not duplicate this sensitive copy onto claudiucraciun.com.
+- **Final copy is to be lifted from the founder's filmed origin story.** The draft below (3.2) is a strong,
+  on-brand placeholder so you can build the structure NOW — refine the words against the real video later.
+
+### 3.2 DRAFT COPY (dignified placeholder — build the structure, refine words against the video)
+
+**Hero heartbeat (under the existing headline, keep everything else):**
+> There was a time I couldn't see a reason to keep going. I went to the Amazon with nothing but hope —
+> and came back with my life. Now I walk alongside people standing where I was.
+
+**About section** — keep the "Not a guru. Not a shaman." heading; change the sub to
+*"A man who went to the bottom — and found his way back."* and replace the body with:
+> I'd built a life that looked fine from the outside. Underneath it I was lost, and I'd run out of things
+> to try. The books, the teachers, the next person with the next answer — I treated myself like a problem
+> to solve, because solving things was what I knew how to do. It worked for a while. Then the same patterns
+> came back, exactly as they were.
+>
+> There came a point where I genuinely couldn't see a reason to keep going.
+>
+> I went to the Amazon as a last thing — not knowing if it would help, only that I had nothing left to
+> lose. I went with nothing but hope. What I found there wasn't another answer. It was myself. And the
+> slow, unglamorous work that came after, alongside Don Alberto Torres Dávila, a maestro of 50+ years in
+> the Ucayali region of Peru, is what actually changed anything.
+>
+> I've gone back many times since. Not for the peak — for the part that comes after, which is the part
+> that lasts.
+>
+> Now I sit with people doing the same searching I did, often standing somewhere near where I once stood.
+> I'm not here to fix anyone. I'm here to walk alongside — one step ahead on the same trail.
+>
+> Based in Hong Kong. There's enormous need for this work here, and almost no door for it. I want to be one.
+>
+> Romanian. Two decades in technology and business sit quietly behind the work.
+>
+> Your friend in this — C.
+
+**"Start here" slot (above the existing "Where to begin" block; live once the origin video is published):**
+> Before anything else — the whole story, in my own voice. Where I came from, how I lost myself, and the
+> night that gave it back. If you only do one thing on this page, watch this.
+
+**What NOT to touch:** the headline, the agitation opener, the offer/method architecture, "A path, not a
+menu," testimonials, design tokens, separate fees. All strong. The human layer goes ABOVE the method; it
+does not replace it.
+
 ---
 
 ## 4. HARD RULES (never break — legal + brand safety)
