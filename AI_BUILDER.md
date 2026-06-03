@@ -70,8 +70,8 @@ Founder's call, settled. Build to this:
 ### 3.2 DRAFT COPY (dignified placeholder — build the structure, refine words against the video)
 
 **Hero heartbeat (under the existing headline, keep everything else):**
-> There was a time I couldn't see a reason to keep going. I went to the Amazon with nothing but hope —
-> and came back with my life. Now I walk alongside people standing where I was.
+> There was a time I couldn't see a reason to keep going. Peru was my last hope — I went with nothing
+> else, and came back with my life. Now I walk alongside people standing where I was.
 
 **About section** — keep the "Not a guru. Not a shaman." heading; change the sub to
 *"A man who went to the bottom — and found his way back."* and replace the body with:
@@ -82,10 +82,10 @@ Founder's call, settled. Build to this:
 >
 > There came a point where I genuinely couldn't see a reason to keep going.
 >
-> I went to the Amazon as a last thing — not knowing if it would help, only that I had nothing left to
-> lose. I went with nothing but hope. What I found there wasn't another answer. It was myself. And the
-> slow, unglamorous work that came after, alongside Don Alberto Torres Dávila, a maestro of 50+ years in
-> the Ucayali region of Peru, is what actually changed anything.
+> Peru was my last hope. Not one option among others — the last one. I went not knowing if it would help,
+> only that I had nothing left to lose and nothing left to try. What I found there wasn't another answer.
+> It was myself. And the slow, unglamorous work that came after, alongside Don Alberto Torres Dávila, a
+> maestro of 50+ years in the Ucayali region of Peru, is what actually changed anything.
 >
 > I've gone back many times since. Not for the peak — for the part that comes after, which is the part
 > that lasts.
