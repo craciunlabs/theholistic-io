@@ -337,10 +337,11 @@
 .hero-secondary a:hover { color: var(--color-primary); }
 
 .hero-scroll-hint {
-  position: absolute;
-  bottom: var(--space-7);
-  left: 50%;
-  transform: translateX(-50%);
+  /* In the hero flex flow: margin-top:auto pushes it to the bottom when there's
+     room, and guarantees clearance below the content when the hero is tall —
+     so it can never overlap the heartbeat/CTA on any viewport. */
+  margin-top: auto;
+  padding-top: var(--space-10);
   z-index: 2;
   display: flex;
   align-items: center;
@@ -364,8 +365,8 @@
 }
 
 @keyframes scrollBounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.55; }
-  50% { transform: translateX(-50%) translateY(6px); opacity: 0.85; }
+  0%, 100% { transform: translateY(0); opacity: 0.55; }
+  50% { transform: translateY(6px); opacity: 0.85; }
 }
 
 /* ============================================
