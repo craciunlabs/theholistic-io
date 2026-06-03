@@ -1808,3 +1808,100 @@
   margin-top: var(--space-2);
   line-height: 1.55;
 }
+
+/* ── Human layer (AI_BUILDER §3.2): hero heartbeat, about sign-off, Start-here slot, footer support line ── */
+
+/* Hero heartbeat — the man appears under the headline, before the method */
+.hero-heartbeat {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--color-text);
+  max-width: 54ch;
+  margin: var(--space-5) auto var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-divider);
+  opacity: 0.92;
+}
+
+/* About sign-off — the friend voice closes the human section */
+.about-signoff {
+  font-family: var(--font-display);
+  font-size: var(--text-lg) !important;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-primary) !important;
+  margin-top: var(--space-4);
+}
+
+/* Start here — origin video slot (coming-soon card until the film is published) */
+.starthere-section {
+  padding-block: clamp(var(--space-16), 8vw, var(--space-24));
+  border-top: 1px solid var(--color-divider);
+}
+.starthere-card {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.starthere-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 1rem + 2.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--color-text);
+  margin-bottom: var(--space-5);
+}
+.starthere-body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  max-width: 56ch;
+  margin: 0 auto var(--space-10);
+}
+.starthere-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text-muted);
+}
+.starthere-play {
+  color: var(--color-primary);
+  opacity: 0.7;
+}
+.starthere-badge {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Footer support line — HARD RULE 7: muted, small, near where the bottom is referenced */
+.footer-support {
+  margin-top: var(--space-6);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+.footer-support a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer-support a:hover { color: var(--color-primary); }
