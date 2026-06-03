@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Apply saved theme before paint to avoid a flash on load/navigation. -->
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
 <title>The Holistic — the deep work most people put off.</title>
 <meta name="description" content="For people who feel everything. The patterns that keep coming back, and the slower work that actually moves them. No guru act, no quick fixes. The deeper work is by application.">
 <meta name="keywords" content="the holistic, Claudiu Craciun, traditional Amazonian diets, intuitives, empaths, deep feelers, inner work, holistic community">
@@ -433,7 +435,9 @@
 (function(){
   const t = document.querySelector('[data-theme-toggle]');
   const r = document.documentElement;
-  let d = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+  let stored = null;
+  try { stored = localStorage.getItem('theme'); } catch (e) {}
+  let d = stored || r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
   r.setAttribute('data-theme', d);
 
   function updateIcon() {
@@ -448,6 +452,7 @@
   t && t.addEventListener('click', () => {
     d = d === 'dark' ? 'light' : 'dark';
     r.setAttribute('data-theme', d);
+    try { localStorage.setItem('theme', d); } catch (e) {}
     updateIcon();
   });
 

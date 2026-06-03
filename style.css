@@ -1112,6 +1112,40 @@
   .clarity-layout {
     grid-template-columns: 1fr;
   }
+  /* Grid items default to min-width:auto (content-based), which keeps the
+     fee/detail cards from shrinking below their content on the narrowest
+     phones (~320px) and forces a few px of horizontal scroll. min-width:0
+     lets them honour the single-column track width. */
+  .clarity-layout,
+  .clarity-layout > *,
+  .clarity-sidebar,
+  .clarity-main {
+    min-width: 0;
+  }
+}
+
+/* On the very narrowest phones, the card padding (up to 32px each side) plus
+   content won't fit a 320px screen. Tighten padding just here. */
+@media (max-width: 380px) {
+  .clarity-detail {
+    padding: var(--space-6);
+  }
+}
+
+/* "This is not for everyone" two-column block (inline-styled in amazonian.html).
+   Two columns won't fit narrow phones — collapse to one, and tighten the
+   wrapper padding on the very narrowest screens. !important is required to
+   beat the element's inline style. */
+@media (max-width: 560px) {
+  .fit-2col {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-6) !important;
+  }
+}
+@media (max-width: 380px) {
+  .fit-card {
+    padding: var(--space-6) !important;
+  }
 }
 
 .clarity-sidebar {

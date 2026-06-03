@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Apply saved theme before paint to avoid a flash on load/navigation. -->
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
 <title>Clarity Session — 90-Min Private Consultation | The Holistic</title>
 <meta name="description" content="A private 90-minute session. The pattern that keeps coming back, the next right move, preparing for or integrating deep work. By application. $500. 24-hour money-back guarantee.">
 <meta name="robots" content="index, follow">
@@ -240,7 +242,9 @@
 (function(){
   const t = document.querySelector('[data-theme-toggle]');
   const r = document.documentElement;
-  let d = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+  let stored = null;
+  try { stored = localStorage.getItem('theme'); } catch (e) {}
+  let d = stored || r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
   r.setAttribute('data-theme', d);
 
   function updateIcon() {
@@ -255,6 +259,7 @@
   t && t.addEventListener('click', () => {
     d = d === 'dark' ? 'light' : 'dark';
     r.setAttribute('data-theme', d);
+    try { localStorage.setItem('theme', d); } catch (e) {}
     updateIcon();
   });
 
