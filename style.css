@@ -238,6 +238,22 @@
   z-index: 1;
 }
 
+/* LIGHT THEME hero: the brand image + overlay are tuned for the dark base, so
+   on light theme they leave the hero a muddy gray while the rest of the page
+   goes cream. Fade the dark texture right down and switch the overlay to a warm
+   light wash so the hero matches the light page and the CTAs stay legible. */
+[data-theme="light"] .hero-image-bg {
+  opacity: 0.06;
+}
+[data-theme="light"] .hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(245,242,236,0.55) 0%,
+    rgba(245,242,236,0.35) 50%,
+    rgba(245,242,236,0.85) 100%
+  );
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
@@ -352,11 +368,9 @@
   animation: scrollBounce 2.4s ease-in-out infinite;
 }
 
-/* Decorative cue — invitation, not instruction. Hidden where it would crowd:
-   on phones (two-doors strip is already in view) and on short viewports. */
-@media (max-width: 600px) {
-  .hero-scroll-hint { display: none; }
-}
+/* Decorative cue — invitation, not instruction. Now sits in the hero flex flow
+   below the CTAs, so it's safe to show on phones too (no longer crowds them).
+   Still hidden on short viewports where the hero already fits with no scroll. */
 @media (max-height: 760px) {
   .hero-scroll-hint { display: none; }
 }
