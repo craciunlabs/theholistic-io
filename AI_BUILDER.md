@@ -93,7 +93,12 @@ Founder's call, settled. Build to this:
 > Now I sit with people doing the same searching I did, often standing somewhere near where I once stood.
 > I'm not here to fix anyone. I'm here to walk alongside — one step ahead on the same trail.
 >
-> Based in Hong Kong. There's enormous need for this work here, and almost no door for it. I want to be one.
+> I call Hong Kong home right now, along with Peru — but at heart I'm a nomad. I never belonged anywhere
+> growing up, and somewhere along the way that became the gift: I go where I'm most needed. There's enormous
+> need for this work in Asia, and almost no door for it. I want to be one.
+> *(Builder note: this nomad framing REPLACES the old "Based in Hong Kong" line — the old line read like a
+> corporate relocation notice dropped into a soul story. The nomad version resolves the "never belonged"
+> thread from the origin into "belongs everywhere / goes where needed." Keep the "I want to be one" close.)*
 >
 > Romanian. Two decades in technology and business sit quietly behind the work.
 >
