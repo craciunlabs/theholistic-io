@@ -208,7 +208,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 80px var(--space-6) var(--space-16);
+  padding: 80px var(--space-6) var(--space-10);
   position: relative;
   overflow: hidden;
 }
@@ -281,7 +281,7 @@
   line-height: 1.12;
   letter-spacing: 0.01em;
   color: var(--color-text);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
   max-width: 18ch;
   margin-left: auto;
   margin-right: auto;
@@ -322,7 +322,7 @@
   letter-spacing: 0.01em;
   color: var(--color-text-muted);
   max-width: 52ch;
-  margin: 0 auto var(--space-10);
+  margin: 0 auto var(--space-8);
   opacity: 0.85;
 }
 
@@ -374,6 +374,7 @@
 @media (max-height: 760px) {
   .hero-scroll-hint { display: none; }
 }
+
 @media (prefers-reduced-motion: reduce) {
   .hero-scroll-hint { animation: none; }
 }
@@ -2015,4 +2016,25 @@
   color: var(--color-primary);
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+/* ============================================
+   SHORT-VIEWPORT HERO FIT (placed last so it wins source-order specificity
+   over .hero-heartbeat defined earlier). Catches 1366x768 / 1280x720 laptops
+   and short phones. Spacing + heartbeat size only — NO copy changes. */
+@media (max-height: 860px) {
+  .hero { padding-top: 56px; padding-bottom: var(--space-6); }
+  .hero-content { padding-bottom: var(--space-3); }
+  .hero-headline { margin-bottom: var(--space-4); }
+  .hero-heartbeat { font-size: var(--text-base); margin: var(--space-3) auto; }
+  .hero-filter { margin-bottom: var(--space-3); }
+  .hero-disambiguator { margin-bottom: var(--space-4); }
+}
+@media (max-height: 760px) {
+  .hero-headline { font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); margin-bottom: var(--space-3); }
+  .hero-heartbeat { font-size: var(--text-sm); margin: var(--space-2) auto; }
+  .hero-filter { margin-bottom: var(--space-2); }
+  .hero-disambiguator { margin-bottom: var(--space-3); }
+  .hero-content { padding-bottom: var(--space-2); }
+  .hero { padding-top: 52px; }
 }
