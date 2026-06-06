@@ -34,4 +34,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://theholistic.io/sitemap.xml
+Sitemap: https://www.theholistic.io/sitemap.xml
