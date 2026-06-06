@@ -209,5 +209,51 @@ If you have access to that brief, read it. If not, **this file is enough to buil
 
 ---
 
-*Last updated June 3, 2026. If you change the brand's direction, update the SPINE section first —
-everything else descends from it.*
+## 10. CHANGELOG — June 5, 2026 copy pass (READ before re-editing these lines)
+
+These edits were made deliberately by the founder, line by line, after he recorded the full origin
+story. **They are intentional — do not revert them to the older copy.** If you optimize layout or
+display, preserve this wording and meaning. Two new principles now drive the copy:
+
+**(A) Texture from the recording (concrete > abstract).** The recording gave specific, lived images.
+The storefront stays restrained — the *video* carries the raw — but a few abstractions were swapped
+for the founder's own concrete language:
+- **Hero heartbeat (index):** now opens on the real question ("a night I sat in the dark and asked if
+  it was even worth living") and names the turning point as **"the night I met myself"** — NOT
+  ayahuasca. The hard wall holds: no ayahuasca anywhere on the site; the video names it once, the site
+  stays dignified. Do not "clarify" this by adding the literal word.
+- **About bio (index):** replaced the abstract "books, teachers, the next answer" beat with the
+  concrete London image — the expensive suit, the haircut, **"None of it mattered, because I didn't
+  have myself."** This is the truest line in the recording; keep it.
+- **Amazonian "My role":** one added sentence of lived texture ("arrived at my own bottom, sat alone
+  in the jungle, went through the dark, and came out the other side"). The rest of the Amazonian page
+  was intentionally left untouched — it is the strongest page on the site.
+
+**(B) The GRADUATION principle (new, load-bearing).** The whole point is the person stops needing him.
+Founder's words: *"if you graduate — which I want you to — come back sometimes, let's share like good
+friends with laughter; no another teaching or integration."* Success = they don't need him anymore.
+This is now woven QUIETLY (felt, not shouted) into three spots — keep all three:
+- **Hero (index):** "...I walk **a while** with people standing where I stood, **until they can walk it
+  themselves.**" The old "I walk alongside people" implied an open-ended (guru/subscription) relationship;
+  this corrects it. Do not restore the open-ended phrasing.
+- **About sign-off (index):** the quiet line before "Your friend in this — C.": **"The aim was never
+  for you to need me. It's for you to not — and then, sometimes, to come back as friends."** Keep it as
+  one quiet line, not a banner.
+- **Clarity lead (clarity.html):** reframed from transactional ("clarity on the next right move") to
+  relational + graduation: **"not the first rung of a ladder... feel genuinely seen by someone a step
+  ahead... go do it with what you already have."** The site already says "no packages, no subscriptions"
+  as a pricing fact — this turns it into philosophy. Keep both.
+
+**(C) "Start here" card (index):** body now reads "...the one night that gave it back. **Told once,
+  straight through.** If you do one thing on this page, let it be this." ("Told once, straight through"
+  signals raw/real, not a sales reel.) The "I'm filming it now" line is still present — **flip it to the
+  live video embed the moment the origin film is published.** That card is the site's true front door.
+
+**Primary focus note:** the brand's active priority is the **YouTube channel** (origin video first).
+The site is being kept truthful in the background; big structural/display optimization is welcome, but
+the wording and the two principles above are settled.
+
+---
+
+*Last updated June 5, 2026 (copy pass appended as §10). Prior structural brief: June 3, 2026. If you
+change the brand's direction, update the SPINE section first — everything else descends from it.*
