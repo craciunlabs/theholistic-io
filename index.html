@@ -187,12 +187,33 @@
         <a href="./clarity.html" class="btn btn--primary">Start with a Clarity Session</a>
         <a href="./amazonian.html" class="btn btn--ghost">Explore the deep work →</a>
       </div>
+      <a href="#start-here" class="hero-watch fade-up fade-up--4">Or watch my story first &mdash; 14 min</a>
     </div>
 
     <div class="hero-scroll-hint fade-up fade-up--5" aria-hidden="true">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M7 10l5 5 5-5"/>
       </svg>
+    </div>
+  </section>
+
+  <!-- START HERE — origin film (facade embed: thumbnail poster -> click loads nocookie player). Sits directly under the hero: the film is the site's true front door. -->
+  <section class="starthere-section" id="start-here">
+    <div class="container">
+      <div class="starthere-card">
+        <p class="section-eyebrow">Start here</p>
+        <h2 class="starthere-heading">The whole story, in my own voice.</h2>
+        <p class="starthere-body">Where I came from, how I lost myself, and the one night that gave it back. Told once, straight through. If you do one thing on this page, let it be this.</p>
+        <button type="button" class="starthere-video" data-video="fV870rZB5pk" aria-label="Play the origin film: The night I met myself, in the Amazon">
+          <img src="./origin-thumb.jpg" alt="The night I met myself, in the Amazon &mdash; Claudiu Craciun" class="starthere-poster" width="1280" height="720" loading="lazy">
+          <span class="starthere-playbtn" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="none">
+              <path d="M9 7.5l8 4.5-8 4.5V7.5z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="starthere-runtime" aria-hidden="true">14 min</span>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -363,24 +384,6 @@
             <a href="https://claudiucraciun.com" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Full profile →</a>
             <a href="./clarity.html" class="btn btn--primary">Work 1:1</a>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- START HERE — origin video slot (coming-soon card until the film is published; never a broken embed) -->
-  <section class="starthere-section">
-    <div class="container">
-      <div class="starthere-card">
-        <p class="section-eyebrow">Start here</p>
-        <h2 class="starthere-heading">The whole story, in my own voice.</h2>
-        <p class="starthere-body">Where I came from, how I lost myself, and the one night that gave it back. Told once, straight through. If you do one thing on this page, let it be this. I&rsquo;m filming it now.</p>
-        <div class="starthere-frame" aria-hidden="true">
-          <svg class="starthere-play" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M10 8l6 4-6 4V8z" fill="currentColor" stroke="none"/>
-          </svg>
-          <span class="starthere-badge">Coming soon &mdash; the full story</span>
         </div>
       </div>
     </div>
@@ -576,6 +579,23 @@
     window.addEventListener('scroll', () => {
       hint.style.opacity = window.scrollY > 60 ? '0' : '1';
     }, { passive: true });
+  }
+
+  // Origin-film facade: on click, swap the poster for the privacy-enhanced player and autoplay.
+  const filmBtn = document.querySelector('.starthere-video');
+  if (filmBtn) {
+    filmBtn.addEventListener('click', () => {
+      const id = filmBtn.getAttribute('data-video');
+      const wrap = document.createElement('div');
+      wrap.className = 'starthere-iframe-wrap';
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      iframe.title = 'The night I met myself, in the Amazon \u2014 Claudiu Craciun';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.setAttribute('allowfullscreen', '');
+      wrap.appendChild(iframe);
+      filmBtn.replaceWith(wrap);
+    });
   }
 })();
 </script>

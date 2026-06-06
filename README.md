@@ -9,10 +9,14 @@ Brand manifesto and hub for **The Holistic** by Claudiu Craciun.
 theholistic.io is the brand home for The Holistic — where free knowledge lives and where visitors can discover Claudiu's work across YouTube, newsletter, and community before deciding to go deeper.
 
 **Architecture within the broader ecosystem:**
-- theholistic.io → brand home (this repo)
-- claudiucraciun.com → personal hub with paid offers
-- claudiucraciun.com/clarity.html → Clarity Session ($500)
-- claudiucraciun.com/amazonian.html → Traditional Amazonian Diets ($2,500+)
+- theholistic.io → brand home + storefront (this repo). Offers live HERE.
+- theholistic.io/clarity.html → Clarity Session ($500, application-only)
+- theholistic.io/amazonian.html → Traditional Amazonian Diets (Claudiu's fee $2,500, SEPARATE from the maestro's fee)
+- claudiucraciun.com → the person / the proof (sends deeper traffic to .io)
+
+> NOTE (corrected June 5, 2026): an earlier version of this README placed the offers on
+> claudiucraciun.com. That is wrong. The live offers are on **theholistic.io** (`/clarity.html`,
+> `/amazonian.html`). Fees are NEVER combined into one number.
 
 ---
 
@@ -20,7 +24,9 @@ theholistic.io is the brand home for The Holistic — where free knowledge lives
 
 | File | Purpose |
 |---|---|
-| `index.html` | Single-page site — hero, about, manifesto, channels, CTA, testimonials |
+| `index.html` | Home — hero, **origin film (Start here)**, two-doors, manifesto, About, testimonials, FAQ |
+| `clarity.html` | Clarity Session ($500) — native step-through application |
+| `amazonian.html` | Traditional Amazonian Diets — the deep work, separate fees, ceremonial-tradition copy |
 
 ---
 
@@ -40,15 +46,23 @@ theholistic.io is the brand home for The Holistic — where free knowledge lives
 
 ---
 
-## Page Sections (top to bottom)
+## Page Sections (index.html, top to bottom)
 
-1. **Hero** — full viewport, hero-bg.jpg background with gold glow, headline "Two worlds. One path.", two CTAs
-2. **About Claudiu** — photo + bio, pulled high in the scroll so visitors understand who this is immediately
-3. **Manifesto** — pullquote + 3 pillars (No titles / Free knowledge / Both worlds)
-4. **What this is / isn't** — contrast columns
-5. **Free resources** — YouTube, Community, Newsletter links
-6. **Work with Claudiu** — Clarity Session + Traditional Amazonian Diets cards (links to claudiucraciun.com)
-7. **Testimonials** — 8 real testimonials, Alen featured, no placeholder text
+1. **Hero** — full viewport, headline "There was a time I couldn't see a reason to keep going." + dignified "heartbeat" line, two CTAs, and a quiet "Or watch my story first" link to the origin film
+2. **Start here — the origin film** — the site's TRUE front door. Facade embed: `origin-thumb.jpg` poster + gold play button → click loads the privacy-enhanced (youtube-nocookie) player. Video: https://youtu.be/fV870rZB5pk ("The Night I Met Myself, in the Amazon", ~14 min, PUBLIC)
+3. **Two-doors strip** — Clarity (start here) + Amazonian Diets (go deeper) wayfinding
+4. **Prose / agitation / the work** — why insight alone never moved it; the walk, not the brew
+5. **Manifesto** — pullquote + pillars
+6. **About Claudiu** — the dignified origin story in his own words (the "expensive suit / I didn't have myself" beat), graduation sign-off, nomad framing
+7. **Testimonials** — real, attributable only
+8. **FAQ** — visible accordions + FAQPage schema (4 Q on index)
+9. **Footer** — links + findahelpline.com support line (HARD RULE 7)
+
+### Origin film — facade embed (how it works)
+- `index.html` `.starthere-video` button carries `data-video="fV870rZB5pk"` and shows `origin-thumb.jpg`.
+- A small script (bottom of `index.html`) swaps the poster for a `youtube-nocookie.com/embed/...?autoplay=1` iframe on click. Nothing loads from YouTube until the visitor clicks (fast + privacy-friendly).
+- To change the film later: replace `origin-thumb.jpg` and update the `data-video` ID (one place).
+- If the video is ever set Private/Unlisted, the embed will error for visitors — keep it PUBLIC.
 
 ---
 
@@ -62,6 +76,8 @@ theholistic.io is the brand home for The Holistic — where free knowledge lives
 | `favicon.svg` | H monogram in gold |
 | `hero-bg.jpg` | "THE HOLISTIC" brand image with gold glow — hero background |
 | `claudiu-profile.jpg` | Claudiu's portrait — used in About section |
+| `origin-thumb.jpg` | Origin-film poster ("The Night I Met Myself, in the Amazon") — Start here facade |
+| `wordmark.png` | THE HOLISTIC wordmark — header logo |
 
 ---
 
@@ -100,9 +116,10 @@ theholistic.io is the brand home for The Holistic — where free knowledge lives
 ## Pending
 
 - [ ] Add Eileen Davies testimonial when received
-- [ ] Connect Skool community → update welcome message
-- [ ] Update Skool icon → use the-holistic-icon-square.png
+- [ ] Submit to Google Rich Results Test + request re-indexing in Search Console (origin film + FAQ/schema) — owner-only (logged-in account)
+- [ ] Resolve the "community" destination for the homepage (Skool vs. Beehiiv community) before adding a homepage community link
 - [ ] Email signature update for claudiu@claudiucraciun.com
+- [x] ~~Origin video as Start here~~ — DONE June 5, 2026 (facade embed live)
 
 ---
 
@@ -136,12 +153,13 @@ The site auto-deploys via Perplexity Computer to the CDN hosting at theholistic.
 
 | Platform | Handle/URL |
 |---|---|
-| Website | https://claudiucraciun.com |
-| YouTube | https://youtube.com/@craciunlabs |
-| Community | https://skool.com/the-sanctuary-4657 |
-| Newsletter | https://theholisticprofessional.beehiiv.com |
+| Website | https://theholistic.io · https://claudiucraciun.com |
+| Origin film | https://youtu.be/fV870rZB5pk (PUBLIC) |
+| YouTube | https://youtube.com/@craciunlabs (planned rename → @theholisticio) |
+| Community | TBD — confirm Skool vs. Beehiiv community before linking on homepage |
+| Newsletter | https://theholistic.beehiiv.com (NOT the retired theholisticprofessional.beehiiv.com) |
 | Email | claudiu@claudiucraciun.com |
-| X / Twitter | @theholistic |
+| Instagram / X | @theholisticio (preferred) |
 
 ---
 

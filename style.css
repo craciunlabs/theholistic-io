@@ -208,7 +208,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 80px var(--space-6) var(--space-10);
+  padding: 92px var(--space-6) var(--space-10);
   position: relative;
   overflow: hidden;
 }
@@ -331,6 +331,25 @@
   flex-wrap: wrap;
   gap: var(--space-4);
   justify-content: center;
+}
+
+.hero-watch {
+  display: inline-block;
+  margin-top: var(--space-5);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.hero-watch:hover,
+.hero-watch:focus-visible {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
 }
 
 .hero-secondary {
@@ -1913,30 +1932,94 @@
   max-width: 56ch;
   margin: 0 auto var(--space-10);
 }
-.starthere-frame {
+/* Origin-film facade: thumbnail poster + gold play; click swaps in the nocookie iframe. */
+.starthere-video {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--color-surface);
+  box-shadow: 0 18px 50px -22px rgba(0, 0, 0, 0.65);
+  transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+}
+.starthere-video:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 26px 70px -24px rgba(0, 0, 0, 0.75);
+  transform: translateY(-2px);
+}
+.starthere-video:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+.starthere-poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.starthere-playbtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-4);
-  aspect-ratio: 16 / 9;
-  width: 100%;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  color: var(--color-text-muted);
-}
-.starthere-play {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: rgba(13, 12, 10, 0.55);
+  border: 1px solid var(--color-primary);
   color: var(--color-primary);
-  opacity: 0.7;
+  backdrop-filter: blur(2px);
+  transition: background 0.35s ease, transform 0.35s ease, color 0.35s ease;
 }
-.starthere-badge {
+.starthere-video:hover .starthere-playbtn {
+  background: var(--color-primary);
+  color: #0D0C0A;
+  transform: translate(-50%, -50%) scale(1.06);
+}
+.starthere-runtime {
+  position: absolute;
+  bottom: var(--space-4);
+  right: var(--space-4);
   font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  background: rgba(13, 12, 10, 0.6);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  backdrop-filter: blur(2px);
+}
+.starthere-iframe-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px -22px rgba(0, 0, 0, 0.65);
+}
+.starthere-iframe-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .starthere-video,
+  .starthere-video:hover,
+  .starthere-playbtn,
+  .starthere-video:hover .starthere-playbtn { transition: none; transform: none; }
+  .starthere-video:hover .starthere-playbtn { transform: translate(-50%, -50%); }
 }
 
 /* Footer support line — HARD RULE 7: muted, small, near where the bottom is referenced */
@@ -2023,12 +2106,13 @@
    over .hero-heartbeat defined earlier). Catches 1366x768 / 1280x720 laptops
    and short phones. Spacing + heartbeat size only — NO copy changes. */
 @media (max-height: 860px) {
-  .hero { padding-top: 56px; padding-bottom: var(--space-6); }
+  .hero { padding-bottom: var(--space-6); }
   .hero-content { padding-bottom: var(--space-3); }
   .hero-headline { margin-bottom: var(--space-4); }
   .hero-heartbeat { font-size: var(--text-base); margin: var(--space-3) auto; }
   .hero-filter { margin-bottom: var(--space-3); }
   .hero-disambiguator { margin-bottom: var(--space-4); }
+  .hero-watch { display: none; }
 }
 @media (max-height: 760px) {
   .hero-headline { font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); margin-bottom: var(--space-3); }
@@ -2036,5 +2120,36 @@
   .hero-filter { margin-bottom: var(--space-2); }
   .hero-disambiguator { margin-bottom: var(--space-3); }
   .hero-content { padding-bottom: var(--space-2); }
-  .hero { padding-top: 52px; }
+  .hero-watch { display: none; }
+}
+/* Landscape laptops (wide AND short): smaller top padding is safe because the header is full-height;
+   keep it >= header height so the eyebrow never tucks under the nav. Portrait phones keep the
+   default 80px since their header is shorter and vertical space is scarce. */
+@media (min-width: 900px) and (max-height: 860px) {
+  .hero { padding-top: 84px; }
+}
+/* 1366x768 / 1280x720 class laptops: apply the compact headline + tighter rhythm so the two CTAs
+   clear the fold even with the full-height desktop header. (Phones stay on the <=760 rule below.) */
+@media (min-width: 900px) and (max-height: 820px) {
+  .hero { padding-top: 80px; padding-bottom: var(--space-4); }
+  .hero-headline { font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); margin-bottom: var(--space-3); }
+  .hero-heartbeat { font-size: var(--text-sm); margin: var(--space-2) auto; }
+  .hero-filter { margin-bottom: var(--space-2); }
+  .hero-disambiguator { margin-bottom: var(--space-3); }
+  .hero-content { padding-bottom: var(--space-2); }
+}
+
+/* Anchor jump from the hero "watch my story" link clears the sticky header */
+#start-here { scroll-margin-top: 90px; }
+
+/* Desktop/laptop landscape: the hero now carries a "watch my story" link under the CTAs.
+   Tighten spacing on wide-but-not-tall viewports so BOTH the CTAs and that link clear the
+   fold. Spacing only — protected hero copy untouched. */
+@media (min-width: 900px) and (min-height: 861px) and (max-height: 1000px) {
+  .hero { padding-top: 88px; padding-bottom: var(--space-5); }
+  .hero-headline { margin-bottom: var(--space-3); }
+  .hero-heartbeat { margin-top: var(--space-3); margin-bottom: var(--space-3); }
+  .hero-filter { margin-bottom: var(--space-2); }
+  .hero-disambiguator { margin-bottom: var(--space-4); }
+  .hero-watch { margin-top: var(--space-3); }
 }

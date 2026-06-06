@@ -255,5 +255,39 @@ the wording and the two principles above are settled.
 
 ---
 
-*Last updated June 5, 2026 (copy pass appended as §10). Prior structural brief: June 3, 2026. If you
-change the brand's direction, update the SPINE section first — everything else descends from it.*
+## 11. CHANGELOG — June 5, 2026: the ORIGIN FILM went live (the front door is now real)
+
+The origin film was recorded, edited, and published. The "Start here" slot that §3.1/§3.2/§5 always
+described as the site's true front door is no longer a placeholder — it is the real film. What changed:
+
+- **Film:** "The Night I Met Myself, in the Amazon" — https://youtu.be/fV870rZB5pk · ID `fV870rZB5pk`
+  · ~14 min · **PUBLIC** on YouTube (@craciunlabs). Must stay Public or the embed errors for visitors.
+- **Placement (structural):** the `starthere-section` was MOVED to sit **directly under the hero**, above
+  the two-doors strip. Rationale: the film is the cornerstone; story first, proof (method/About/
+  testimonials) after. Do not bury it back down the page.
+- **Embed style:** a **facade** — `origin-thumb.jpg` (the gold-on-dark brand thumbnail, which itself reads
+  "the night I met myself", matching the hero phrase) + a gold play button + "14 min" badge. Clicking
+  swaps in a `youtube-nocookie.com/embed/...?autoplay=1` iframe (script at the bottom of index.html).
+  Nothing loads from YouTube until click — fast, private, no red-chrome/related-video clutter. Premium.
+- **Copy flip:** "I'm filming it now" and the "Coming soon" badge were REMOVED (the §3.2 / §10C plan said
+  to flip the moment the film published). Body now ends "...If you do one thing on this page, let it be
+  this." The eyebrow "Start here" and heading "The whole story, in my own voice." are unchanged.
+- **Hero nod (new):** a single quiet text link under the hero CTAs — "Or watch my story first — 14 min"
+  — anchors to `#start-here`. It is a MUTED text link, never a third button (the hero stays tight). It is
+  hidden on short/tight viewports so the two primary CTAs always win the fold; shown where there's room.
+- **Layout safety:** hero spacing was re-tuned so the eyebrow always clears the sticky header and both
+  CTAs stay above the fold on all tested device/theme combos (desktop, full-desktop, MacBook, 1366×768
+  and 1280×720 laptops, iPhone/SE, S26 Ultra, Galaxy, Pixel 7, iPad portrait/landscape × dark+light).
+  No protected copy was touched — spacing/size only.
+
+**Transcript / keeper lines** from the film are saved in the brand system at
+`workspace/video_analysis/origin_video_heart.md` (the arc, the safe pull-quotes, and why the film is in
+perfect unison with the site). The film names ayahuasca ONCE (editorial/YouTube — allowed per §4.1/§5);
+the SITE still never does. Note: the auto-transcript rendered the sign-off name as "Claudio" — it is
+**Claudiu**.
+
+---
+
+*Last updated June 5, 2026 (origin-film go-live appended as §11; copy pass §10). Prior structural brief:
+June 3, 2026. If you change the brand's direction, update the SPINE section first — everything else
+descends from it.*
