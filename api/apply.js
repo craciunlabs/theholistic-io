@@ -102,7 +102,7 @@ function buildApplicantHtml(formKey, name) {
       </td></tr>
       <tr><td style="padding:6px 30px 26px;">
         <h1 style="margin:0 0 16px;font:500 24px/1.3 Georgia,'Times New Roman',serif;color:#f3eee2;">Your application is in, ${esc(first)}.</h1>
-        <p style="margin:0 0 14px;font:400 15px/1.7 -apple-system,Segoe UI,Inter,sans-serif;color:#cfc7b6;">Thank you for trusting me with this. I read every application personally — for ${esc(title)} — and I will be in touch ${esc(window)} if I believe this is the right fit.</p>
+        <p style="margin:0 0 14px;font:400 15px/1.7 -apple-system,Segoe UI,Inter,sans-serif;color:#cfc7b6;">Expect a response ${esc(window)}. I read each application myself — for ${esc(title)} — no automated replies, no sales sequence. If I believe I can genuinely help, you'll hear from me with a next step. If I'm not the right fit, I'll tell you that honestly.</p>
         <p style="margin:0 0 14px;font:400 15px/1.7 -apple-system,Segoe UI,Inter,sans-serif;color:#cfc7b6;">This is the deep work most people put off. The fact that you reached out matters.</p>
         <p style="margin:22px 0 0;font:400 15px/1.7 -apple-system,Segoe UI,Inter,sans-serif;color:#cfc7b6;">Your friend in this —<br><span style="color:#f3eee2;">C.</span></p>
       </td></tr>
@@ -174,7 +174,7 @@ export default async function handler(req, res) {
           reply_to: toAddr,
           subject: `Your application is in — The Holistic`,
           html: buildApplicantHtml(formKey, applicantName),
-          text: `Your application is in${applicantName ? ', ' + applicantName.split(/\s+/)[0] : ''}.\n\nThank you for trusting me with this. I read every application personally — for ${title} — and I will be in touch within 5 days if I believe this is the right fit.\n\nThis is the deep work most people put off. The fact that you reached out matters.\n\nYour friend in this —\nC.`,
+          text: `Your application is in${applicantName ? ', ' + applicantName.split(/\s+/)[0] : ''}.\n\nExpect a response within 48 hours. I read each application myself — for ${title} — no automated replies, no sales sequence. If I believe I can genuinely help, you'll hear from me with a next step. If I'm not the right fit, I'll tell you that honestly.\n\nThis is the deep work most people put off. The fact that you reached out matters.\n\nYour friend in this —\nC.`,
         }),
       });
     } catch (e) {
