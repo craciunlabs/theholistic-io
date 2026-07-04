@@ -39,7 +39,7 @@ theholistic.io is the brand home for The Holistic — where free knowledge lives
 | Gold (hover) | `#E8C96A` |
 | Text | `#E8E4DC` |
 | Text muted | `#8A8680` |
-| Font display | Cormorant Garant (Fontshare + Google Fonts) |
+| Font display | Cormorant Garamond (Google Fonts) |
 | Font body | Switzer (Fontshare) |
 
 **Aesthetic:** Luxury editorial — dark, gold, Cormorant serif. Matching claudiucraciun.com.
@@ -71,24 +71,29 @@ theholistic.io is the brand home for The Holistic — where free knowledge lives
 | File | Purpose |
 |---|---|
 | `index.html` | Main HTML |
+| `404.html` | Branded not-found page (Vercel serves it automatically) |
 | `style.css` | All styles for this site |
 | `base.css` | Shared CSS reset/base (same as claudiucraciun.com) |
+| `site.js` | Shared theme toggle + hide-header-on-scroll (all pages) |
+| `api/apply.js` | Vercel serverless form endpoint (Resend; origin check + rate limit) |
 | `favicon.svg` | H monogram in gold |
 | `hero-bg.jpg` | "THE HOLISTIC" brand image with gold glow — hero background |
-| `claudiu-profile.jpg` | Claudiu's portrait — used in About section |
-| `origin-thumb.jpg` | Origin-film poster ("The Night I Met Myself, in the Amazon") — Start here facade |
-| `wordmark.png` | THE HOLISTIC wordmark — header logo |
+| `claudiu-profile.webp` / `.jpg` | Claudiu's portrait — pages use the `.webp`; `.jpg` kept for the Person schema image |
+| `origin-thumb.webp` / `.jpg` | Origin-film poster — pages use the `.webp`; `.jpg` kept for the VideoObject schema thumbnail |
+| `wordmark.webp` / `.png` | THE HOLISTIC wordmark — pages use the `.webp`; `.png` is the source original |
+| `avatar-*.jpg` | Self-hosted testimonial photos (formerly hotlinked from testimonial.to) |
 
 ---
 
 ## SEO
 
-- **Title:** The Holistic — Free Knowledge. Real Transformation.
-- **Description:** Business strategy and traditional Amazonian plant diets, freely shared. No titles, no guru positioning.
-- **Canonical:** https://theholistic.io/
-- **OG image:** hero-bg.jpg
-- **Twitter:** @theholistic
-- **JSON-LD:** Organization schema with founder Person schema
+- **Title:** The Holistic — the deep work most people put off.
+- **Description:** For people who feel everything. The patterns that keep coming back, and the slower work that actually moves them. No guru act, no quick fixes. The deeper work is by application.
+- **Canonical:** https://www.theholistic.io/
+- **OG image:** og-image.jpg (1200×630)
+- **Twitter:** @theholisticio
+- **JSON-LD:** index — Organization + Person + FAQPage + VideoObject; offer pages — Person + Service + FAQPage
+- **AI/answer engines:** robots.txt explicitly welcomes GPTBot, ClaudeBot, PerplexityBot etc.; `llms.txt` describes the work in their terms
 
 ---
 
@@ -131,6 +136,8 @@ theholistic.io is the brand home for The Holistic — where free knowledge lives
 - Free knowledge belongs to everyone; monetise only personal time
 - Plant diets are the core — ceremonies are entirely the client's own decision
 - 24h money-back guarantee on all paid services (Clarity: 24h from session; Amazonian: 24h from first prep call)
+- **Fees stay publicly displayed** on the site so people know what to expect (founder decision, July 3, 2026) — but NEVER combined into one number
+- Food/provisions copy: describe quality ("premium, diet-friendly"), never name specific cuisines (e.g. no "Japanese rice") — founder decision, July 3, 2026
 
 ---
 

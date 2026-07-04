@@ -1,5 +1,11 @@
 # AI Builder — Improvement Consideration (post-Video-3 copy pass)
 
+> **STATUS (July 3, 2026):** Item 1 (homepage card 03 "Eight years" → medicine-family copy) has been
+> APPLIED to index.html. Item 2 remains open/optional. Note also a founder decision that supersedes the
+> "no public fees" phrasing below: **fees ARE displayed publicly on the site** ($500 Clarity, $2,500
+> guidance fee) so people know what to expect — the hard rule is only that Claudiu's fee and the
+> maestro's fee are never combined into one number (per AI_BUILDER.md rule 4).
+
 Date: 2026-06-08 · From: the brand window · Site: theholistic.io · Repo: `craciunlabs/theholistic-io` (main)
 
 > **This is a CONSIDERATION, not a forced change.** The builder owns the site. These are ready-to-apply

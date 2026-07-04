@@ -18,13 +18,9 @@ const FIELD_LABELS = {
   timing: 'Timing',
   health: 'Health context (confidential)',
   // Clarity
-  about: 'About them',
-  situation: 'What they are dealing with',
-  outcome: 'What success looks like',
-  area: 'Focus areas',
-  prior: 'Prior deep work',
-  availability: 'Availability',
-  'anything-else': 'Anything else',
+  focus: 'What they are carrying',
+  prior: 'Worked with a guide, coach, or mentor before',
+  situation: 'The situation, in their words',
 };
 
 const FORM_TITLES = {
@@ -110,10 +106,60 @@ function buildApplicantHtml(formKey, name) {
   </body></html>`;
 }
 
+// Browsers always send an Origin header on cross-site and same-site JSON POSTs.
+// Reject anything claiming to come from a site that isn't ours; requests with
+// no Origin (curl, server-side) still pass honeypot + validation below.
+function originAllowed(origin) {
+  if (!origin) return true;
+  try {
+    const host = new URL(origin).hostname;
+    return (
+      host === 'theholistic.io' ||
+      host === 'www.theholistic.io' ||
+      host === 'localhost' ||
+      host.endsWith('.vercel.app')
+    );
+  } catch {
+    return false;
+  }
+}
+
+const MAX_FIELDS = 30;
+const MAX_FIELD_LENGTH = 5000;
+
+// Best-effort per-IP rate limit. Serverless instances don't share memory, so
+// this is a burst-curb, not a hard guarantee — good enough for a quiet form.
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const RATE_MAX = 5;
+const rateMap = new Map();
+
+function rateLimited(ip) {
+  const now = Date.now();
+  const hits = (rateMap.get(ip) || []).filter((t) => now - t < RATE_WINDOW_MS);
+  hits.push(now);
+  rateMap.set(ip, hits);
+  if (rateMap.size > 1000) {
+    // Drop stale entries so the map can't grow unbounded.
+    for (const [k, v] of rateMap) {
+      if (!v.some((t) => now - t < RATE_WINDOW_MS)) rateMap.delete(k);
+    }
+  }
+  return hits.length > RATE_MAX;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
+  }
+
+  if (!originAllowed(req.headers.origin)) {
+    return res.status(403).json({ ok: false, error: 'Forbidden' });
+  }
+
+  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
+  if (rateLimited(ip)) {
+    return res.status(429).json({ ok: false, error: 'Too many requests. Please try again shortly.' });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -128,6 +174,16 @@ export default async function handler(req, res) {
     try { data = JSON.parse(data); } catch { data = {}; }
   }
   data = data || {};
+
+  // Cap payload shape so a hostile client can't inflate the emails.
+  data = Object.fromEntries(
+    Object.entries(data)
+      .slice(0, MAX_FIELDS)
+      .map(([k, v]) => [
+        String(k).slice(0, 64),
+        typeof v === 'string' ? v.slice(0, MAX_FIELD_LENGTH) : v,
+      ])
+  );
 
   // Honeypot — silently accept bot submissions without sending.
   if (data._gotcha) return res.status(200).json({ ok: true });
