@@ -88,7 +88,7 @@ theholistic.io is the brand home for The Holistic — where free knowledge lives
 ## SEO
 
 - **Title:** The Holistic — the deep work most people put off.
-- **Description:** For people who feel everything. The patterns that keep coming back, and the slower work that actually moves them. No guru act, no quick fixes. The deeper work is by application.
+- **Description:** For people who've built the life, done the work — and still land back in the same patterns. The slower work that actually moves them. No guru act, no quick fixes. The deeper work is by application. *(Updated Jul 16, 2026 per BUILDER_DEPLOY_PACK_FINAL_2026-07-12 — high-functioning cold lead; empath language secondary only.)*
 - **Canonical:** https://www.theholistic.io/
 - **OG image:** og-image.jpg (1200×630)
 - **Twitter:** @theholisticio
@@ -101,14 +101,14 @@ theholistic.io is the brand home for The Holistic — where free knowledge lives
 
 | Person | Role | Status |
 |---|---|---|
-| Alen Oberlechner | Professional medium, Austria | ✅ Live (featured) |
-| Mark Jones | Spiritual Medium, UK | ✅ Live |
+| Rudi Vanlancker | Personal training studio, Brussels | ✅ Live (featured — leads per Jul 12 deploy pack) |
 | Bio Vidigal | Solopreneur, Brazil | ✅ Live |
-| Devi Chandra Ma | Medicine Woman, Prana Verein | ✅ Live |
 | Matthew Ferguson | Community member | ✅ Live |
-| Yonehiro | Medium, Japan | ✅ Live |
 | Mia Ottosson | 30+ years on spiritual path, Sweden | ✅ Live |
-| Rudi Vanlancker | Personal training studio, Brussels | ✅ Live |
+| Alen Oberlechner | Professional medium, Austria | ✅ Live (demoted below fold Jul 16 — medium-titled voices last) |
+| Devi Chandra Ma | Medicine Woman, Prana Verein | ✅ Live (demoted) |
+| Mark Jones | Spiritual Medium, UK | ✅ Live (demoted) |
+| Yonehiro | Medium, Japan | ✅ Live (demoted) |
 | Eileen Davies | Mediumship field | ⏳ Pending — add when received |
 
 **Rules:**
