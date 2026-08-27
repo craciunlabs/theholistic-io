@@ -390,6 +390,10 @@
 
   let current = 1; // 1-based step index
 
+  // Server-signed form token — proves the submit came from a loaded page.
+  let applyToken = null;
+  fetch('/api/apply').then((r) => r.json()).then((j) => { applyToken = j; }).catch(() => {});
+
   /* ---- localStorage auto-save / restore ---- */
   function saveState() {
     try {
@@ -580,6 +584,8 @@
     const data = {};
     fd.forEach((v, k) => { data[k] = v; });
     data.form = 'clarity';
+    if (!applyToken) { try { applyToken = await (await fetch('/api/apply')).json(); } catch (e) {} }
+    if (applyToken) { data._t = applyToken.t; data._sig = applyToken.sig; }
 
     try {
       const resp = await fetch('/api/apply', {
@@ -595,7 +601,8 @@
       success.focus({ preventScroll: true });
       window.scrollTo({ top: Math.max(0, success.getBoundingClientRect().top + window.scrollY - 140), behavior: 'smooth' });
     } catch (err) {
-      showError('Something went wrong sending your application. Please try again, or email applications@theholistic.io directly.');
+      applyToken = null; // stale token is the likely cause — refetch on retry
+      showError('Something went wrong sending your application. Please try again, or email claudiu@claudiucraciun.com directly.');
       nextBtn.innerHTML = origLabel;
       nextBtn.disabled = false;
     }

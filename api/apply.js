@@ -6,6 +6,14 @@
 //   RESEND_API_KEY   - Resend API key for theholistic.io
 //   APPLY_TO         - owner inbox (e.g. claudiu@claudiucraciun.com)
 //   APPLY_FROM       - verified sender (e.g. "The Holistic <applications@theholistic.io>")
+//   APPLY_SECRET     - optional HMAC key for the form token; falls back to
+//                      RESEND_API_KEY so no new env var is required.
+
+import { createHmac } from 'node:crypto';
+
+// Shared-Resend-account rule: every send is tagged project=theholistic so
+// sibling businesses' webhook gates can identify (and ignore) our events.
+const PROJECT_TAG = { name: 'project', value: 'theholistic' };
 
 const FIELD_LABELS = {
   // Amazonian
@@ -46,7 +54,7 @@ function buildOwnerHtml(formKey, data) {
   const email = (data.email || '').trim();
 
   const bodyKeys = Object.keys(data).filter(
-    (k) => k !== 'form' && k !== '_gotcha' && k !== 'name' && k !== 'email'
+    (k) => k !== 'form' && k !== '_gotcha' && k !== '_t' && k !== '_sig' && k !== 'name' && k !== 'email'
   );
 
   const rows = bodyKeys.map((k) => {
@@ -75,7 +83,7 @@ function buildOwnerText(formKey, data) {
   const title = FORM_TITLES[formKey] || 'Application';
   const lines = [`NEW APPLICATION — ${title}`, ''];
   Object.keys(data)
-    .filter((k) => k !== 'form' && k !== '_gotcha')
+    .filter((k) => k !== 'form' && k !== '_gotcha' && k !== '_t' && k !== '_sig')
     .forEach((k) => {
       lines.push(`${FIELD_LABELS[k] || k}:`);
       lines.push(fmtValue(data[k]));
@@ -106,11 +114,11 @@ function buildApplicantHtml(formKey, name) {
   </body></html>`;
 }
 
-// Browsers always send an Origin header on cross-site and same-site JSON POSTs.
-// Reject anything claiming to come from a site that isn't ours; requests with
-// no Origin (curl, server-side) still pass honeypot + validation below.
+// Browsers always send an Origin header on same-site JSON POSTs, so a missing
+// Origin means a script hitting the API directly — reject it. (This closed the
+// hole that let direct curl/bot POSTs bypass the browser entirely.)
 function originAllowed(origin) {
-  if (!origin) return true;
+  if (!origin) return false;
   try {
     const host = new URL(origin).hostname;
     return (
@@ -147,9 +155,34 @@ function rateLimited(ip) {
   return hits.length > RATE_MAX;
 }
 
+// Form token: GET issues a server-signed timestamp the page JS attaches to its
+// submit. Verifying server-side avoids client-clock skew entirely; a valid
+// token proves the submitter at least loaded our page recently.
+const TOKEN_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+
+function tokenSecret() {
+  return process.env.APPLY_SECRET || process.env.RESEND_API_KEY || '';
+}
+
+function signToken(t) {
+  return createHmac('sha256', tokenSecret()).update(String(t)).digest('hex');
+}
+
+function tokenValid(t, sig) {
+  const ts = Number(t);
+  if (!Number.isFinite(ts) || typeof sig !== 'string') return false;
+  if (Date.now() - ts > TOKEN_MAX_AGE_MS || Date.now() - ts < 0) return false;
+  return signToken(ts) === sig;
+}
+
 export default async function handler(req, res) {
+  if (req.method === 'GET') {
+    const t = Date.now();
+    return res.status(200).json({ t, sig: signToken(t) });
+  }
+
   if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
+    res.setHeader('Allow', 'GET, POST');
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
   }
 
@@ -188,6 +221,17 @@ export default async function handler(req, res) {
   // Honeypot — silently accept bot submissions without sending.
   if (data._gotcha) return res.status(200).json({ ok: true });
 
+  // Link-spam heuristic — real applicants rarely paste more than a link or
+  // two; classic spam payloads carry many. Silently accept without sending.
+  const urlCount = (Object.values(data).filter((v) => typeof v === 'string').join(' ').match(/https?:\/\//gi) || []).length;
+  if (urlCount > 2) return res.status(200).json({ ok: true });
+
+  // Form token (issued by GET above). Invalid/missing → visible error so a
+  // real person on a stale page can recover; the client refetches on retry.
+  if (!tokenValid(data._t, data._sig)) {
+    return res.status(400).json({ ok: false, error: 'Please refresh the page and try again.' });
+  }
+
   const formKey = data.form === 'clarity' ? 'clarity' : 'amazonian';
   const applicantEmail = (data.email || '').trim();
   const applicantName = (data.name || '').trim();
@@ -210,6 +254,7 @@ export default async function handler(req, res) {
         subject: `New ${title} application — ${applicantName || applicantEmail}`,
         html: buildOwnerHtml(formKey, data),
         text: buildOwnerText(formKey, data),
+        tags: [PROJECT_TAG, { name: 'category', value: 'application-owner' }, { name: 'form', value: formKey }],
       }),
     });
 
@@ -229,6 +274,7 @@ export default async function handler(req, res) {
           to: [applicantEmail],
           reply_to: toAddr,
           subject: `Your application is in — The Holistic`,
+          tags: [PROJECT_TAG, { name: 'category', value: 'application-confirmation' }, { name: 'form', value: formKey }],
           html: buildApplicantHtml(formKey, applicantName),
           text: `Your application is in${applicantName ? ', ' + applicantName.split(/\s+/)[0] : ''}.\n\nExpect a response within 48 hours. I read each application myself — for ${title} — no automated replies, no sales sequence. If I believe I can genuinely help, you'll hear from me with a next step. If I'm not the right fit, I'll tell you that honestly.\n\nThis is the deep work most people put off. The fact that you reached out matters.\n\nYour friend in this —\nC.`,
         }),

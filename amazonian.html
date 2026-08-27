@@ -578,6 +578,11 @@
 
   const form = document.getElementById('amazonian-form');
   const success = document.getElementById('form-success');
+
+  // Server-signed form token — proves the submit came from a loaded page.
+  let applyToken = null;
+  fetch('/api/apply').then((r) => r.json()).then((j) => { applyToken = j; }).catch(() => {});
+
   if (form) {
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -588,6 +593,8 @@
 
       const data = Object.fromEntries(new FormData(form).entries());
       data.form = 'amazonian';
+      if (!applyToken) { try { applyToken = await (await fetch('/api/apply')).json(); } catch (e) {} }
+      if (applyToken) { data._t = applyToken.t; data._sig = applyToken.sig; }
 
       try {
         const resp = await fetch('/api/apply', {
@@ -606,7 +613,8 @@
           errEl.style.cssText = 'color:#e0a0a0;margin-top:12px;font-size:14px;';
           (form.querySelector('.form-submit-area') || form).appendChild(errEl);
         }
-        errEl.textContent = 'Something went wrong sending your application. Please try again, or email applications@theholistic.io directly.';
+        applyToken = null; // stale token is the likely cause — refetch on retry
+        errEl.textContent = 'Something went wrong sending your application. Please try again, or email claudiu@claudiucraciun.com directly.';
         if (btn) { btn.disabled = false; btn.textContent = origLabel; }
       }
     });
